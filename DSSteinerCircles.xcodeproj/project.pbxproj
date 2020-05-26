@@ -1,0 +1,481 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F802BA2D247DD64E00F28AA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F802BA2C247DD64E00F28AA2 /* AppDelegate.swift */; };
+		F802BA2F247DD64E00F28AA2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F802BA2E247DD64E00F28AA2 /* ContentView.swift */; };
+		F802BA31247DD64F00F28AA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F802BA30247DD64F00F28AA2 /* Assets.xcassets */; };
+		F802BA34247DD64F00F28AA2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F802BA33247DD64F00F28AA2 /* Preview Assets.xcassets */; };
+		F802BA37247DD64F00F28AA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F802BA35247DD64F00F28AA2 /* Main.storyboard */; };
+		F802BA43247DD64F00F28AA2 /* DSSteinerCirclesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F802BA42247DD64F00F28AA2 /* DSSteinerCirclesTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F802BA3F247DD64F00F28AA2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F802BA21247DD64E00F28AA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F802BA28247DD64E00F28AA2;
+			remoteInfo = DSSteinerCircles;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F802BA29247DD64E00F28AA2 /* DSSteinerCircles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DSSteinerCircles.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F802BA2C247DD64E00F28AA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F802BA2E247DD64E00F28AA2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F802BA30247DD64F00F28AA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F802BA33247DD64F00F28AA2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F802BA36247DD64F00F28AA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F802BA38247DD64F00F28AA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F802BA39247DD64F00F28AA2 /* DSSteinerCircles.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DSSteinerCircles.entitlements; sourceTree = "<group>"; };
+		F802BA3E247DD64F00F28AA2 /* DSSteinerCirclesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DSSteinerCirclesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F802BA42247DD64F00F28AA2 /* DSSteinerCirclesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSSteinerCirclesTests.swift; sourceTree = "<group>"; };
+		F802BA44247DD64F00F28AA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F802BA26247DD64E00F28AA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F802BA3B247DD64F00F28AA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F802BA20247DD64E00F28AA2 = {
+			isa = PBXGroup;
+			children = (
+				F802BA2B247DD64E00F28AA2 /* DSSteinerCircles */,
+				F802BA41247DD64F00F28AA2 /* DSSteinerCirclesTests */,
+				F802BA2A247DD64E00F28AA2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F802BA2A247DD64E00F28AA2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F802BA29247DD64E00F28AA2 /* DSSteinerCircles.app */,
+				F802BA3E247DD64F00F28AA2 /* DSSteinerCirclesTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F802BA2B247DD64E00F28AA2 /* DSSteinerCircles */ = {
+			isa = PBXGroup;
+			children = (
+				F802BA2C247DD64E00F28AA2 /* AppDelegate.swift */,
+				F802BA2E247DD64E00F28AA2 /* ContentView.swift */,
+				F802BA30247DD64F00F28AA2 /* Assets.xcassets */,
+				F802BA35247DD64F00F28AA2 /* Main.storyboard */,
+				F802BA38247DD64F00F28AA2 /* Info.plist */,
+				F802BA39247DD64F00F28AA2 /* DSSteinerCircles.entitlements */,
+				F802BA32247DD64F00F28AA2 /* Preview Content */,
+			);
+			path = DSSteinerCircles;
+			sourceTree = "<group>";
+		};
+		F802BA32247DD64F00F28AA2 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F802BA33247DD64F00F28AA2 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F802BA41247DD64F00F28AA2 /* DSSteinerCirclesTests */ = {
+			isa = PBXGroup;
+			children = (
+				F802BA42247DD64F00F28AA2 /* DSSteinerCirclesTests.swift */,
+				F802BA44247DD64F00F28AA2 /* Info.plist */,
+			);
+			path = DSSteinerCirclesTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F802BA28247DD64E00F28AA2 /* DSSteinerCircles */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F802BA47247DD64F00F28AA2 /* Build configuration list for PBXNativeTarget "DSSteinerCircles" */;
+			buildPhases = (
+				F802BA25247DD64E00F28AA2 /* Sources */,
+				F802BA26247DD64E00F28AA2 /* Frameworks */,
+				F802BA27247DD64E00F28AA2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DSSteinerCircles;
+			productName = DSSteinerCircles;
+			productReference = F802BA29247DD64E00F28AA2 /* DSSteinerCircles.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F802BA3D247DD64F00F28AA2 /* DSSteinerCirclesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F802BA4A247DD64F00F28AA2 /* Build configuration list for PBXNativeTarget "DSSteinerCirclesTests" */;
+			buildPhases = (
+				F802BA3A247DD64F00F28AA2 /* Sources */,
+				F802BA3B247DD64F00F28AA2 /* Frameworks */,
+				F802BA3C247DD64F00F28AA2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F802BA40247DD64F00F28AA2 /* PBXTargetDependency */,
+			);
+			name = DSSteinerCirclesTests;
+			productName = DSSteinerCirclesTests;
+			productReference = F802BA3E247DD64F00F28AA2 /* DSSteinerCirclesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F802BA21247DD64E00F28AA2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = "Don Sleeter";
+				TargetAttributes = {
+					F802BA28247DD64E00F28AA2 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					F802BA3D247DD64F00F28AA2 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = F802BA28247DD64E00F28AA2;
+					};
+				};
+			};
+			buildConfigurationList = F802BA24247DD64E00F28AA2 /* Build configuration list for PBXProject "DSSteinerCircles" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F802BA20247DD64E00F28AA2;
+			productRefGroup = F802BA2A247DD64E00F28AA2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F802BA28247DD64E00F28AA2 /* DSSteinerCircles */,
+				F802BA3D247DD64F00F28AA2 /* DSSteinerCirclesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F802BA27247DD64E00F28AA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F802BA37247DD64F00F28AA2 /* Main.storyboard in Resources */,
+				F802BA34247DD64F00F28AA2 /* Preview Assets.xcassets in Resources */,
+				F802BA31247DD64F00F28AA2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F802BA3C247DD64F00F28AA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F802BA25247DD64E00F28AA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F802BA2F247DD64E00F28AA2 /* ContentView.swift in Sources */,
+				F802BA2D247DD64E00F28AA2 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F802BA3A247DD64F00F28AA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F802BA43247DD64F00F28AA2 /* DSSteinerCirclesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F802BA40247DD64F00F28AA2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F802BA28247DD64E00F28AA2 /* DSSteinerCircles */;
+			targetProxy = F802BA3F247DD64F00F28AA2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F802BA35247DD64F00F28AA2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F802BA36247DD64F00F28AA2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F802BA45247DD64F00F28AA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F802BA46247DD64F00F28AA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		F802BA48247DD64F00F28AA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DSSteinerCircles/DSSteinerCircles.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"DSSteinerCircles/Preview Content\"";
+				DEVELOPMENT_TEAM = 96J2PPD4HG;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = DSSteinerCircles/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stonecanyon.DSSteinerCircles;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F802BA49247DD64F00F28AA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DSSteinerCircles/DSSteinerCircles.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"DSSteinerCircles/Preview Content\"";
+				DEVELOPMENT_TEAM = 96J2PPD4HG;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = DSSteinerCircles/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stonecanyon.DSSteinerCircles;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		F802BA4B247DD64F00F28AA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 96J2PPD4HG;
+				INFOPLIST_FILE = DSSteinerCirclesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stonecanyon.DSSteinerCirclesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DSSteinerCircles.app/Contents/MacOS/DSSteinerCircles";
+			};
+			name = Debug;
+		};
+		F802BA4C247DD64F00F28AA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 96J2PPD4HG;
+				INFOPLIST_FILE = DSSteinerCirclesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stonecanyon.DSSteinerCirclesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DSSteinerCircles.app/Contents/MacOS/DSSteinerCircles";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F802BA24247DD64E00F28AA2 /* Build configuration list for PBXProject "DSSteinerCircles" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F802BA45247DD64F00F28AA2 /* Debug */,
+				F802BA46247DD64F00F28AA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F802BA47247DD64F00F28AA2 /* Build configuration list for PBXNativeTarget "DSSteinerCircles" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F802BA48247DD64F00F28AA2 /* Debug */,
+				F802BA49247DD64F00F28AA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F802BA4A247DD64F00F28AA2 /* Build configuration list for PBXNativeTarget "DSSteinerCirclesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F802BA4B247DD64F00F28AA2 /* Debug */,
+				F802BA4C247DD64F00F28AA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F802BA21247DD64E00F28AA2 /* Project object */;
+}
