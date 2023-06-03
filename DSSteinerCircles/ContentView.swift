@@ -7,17 +7,27 @@
 //
 
 import SwiftUI
+import SteinerCircleModel
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, World!")
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+  
+  @State private var count: Double = 8
+  @State private var gap: Double = 0.0
+  @State private var thickness: CGFloat = 4.0
+  
+  var body: some View {
+    VStack {
+      CircleRing(count: Int(count), thickness: thickness, gap: CGFloat(gap))
+        .foregroundColor(.secondary)
+        .scaleEffect(0.90)
+        .aspectRatio(1.0, contentMode: .fit)
     }
+  }
 }
 
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+  static var previews: some View {
+    ContentView()
+  }
 }

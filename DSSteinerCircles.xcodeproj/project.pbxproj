@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,12 @@
 		F802BA34247DD64F00F28AA2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F802BA33247DD64F00F28AA2 /* Preview Assets.xcassets */; };
 		F802BA37247DD64F00F28AA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F802BA35247DD64F00F28AA2 /* Main.storyboard */; };
 		F802BA43247DD64F00F28AA2 /* DSSteinerCirclesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F802BA42247DD64F00F28AA2 /* DSSteinerCirclesTests.swift */; };
+		F802BA50247DD71600F28AA2 /* SteinerCircleModel in Frameworks */ = {isa = PBXBuildFile; productRef = F802BA4F247DD71600F28AA2 /* SteinerCircleModel */; };
+		F802BA53247EF78500F28AA2 /* CircleLabeled.swift in Sources */ = {isa = PBXBuildFile; fileRef = F802BA51247EF78500F28AA2 /* CircleLabeled.swift */; };
+		F802BA54247EF78500F28AA2 /* CircleRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F802BA52247EF78500F28AA2 /* CircleRing.swift */; };
+		F884792428A052510043C689 /* SequenceBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = F884792328A052510043C689 /* SequenceBuilder */; };
+		F884792628A052510043C689 /* SequenceBuilderExamples in Frameworks */ = {isa = PBXBuildFile; productRef = F884792528A052510043C689 /* SequenceBuilderExamples */; };
+		F896E1D72A2AA960008938E5 /* Dial.swift in Sources */ = {isa = PBXBuildFile; fileRef = F896E1D62A2AA960008938E5 /* Dial.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +43,10 @@
 		F802BA3E247DD64F00F28AA2 /* DSSteinerCirclesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DSSteinerCirclesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F802BA42247DD64F00F28AA2 /* DSSteinerCirclesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSSteinerCirclesTests.swift; sourceTree = "<group>"; };
 		F802BA44247DD64F00F28AA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F802BA4D247DD6C200F28AA2 /* SteinerCircleModel */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SteinerCircleModel; sourceTree = "<group>"; };
+		F802BA51247EF78500F28AA2 /* CircleLabeled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleLabeled.swift; sourceTree = "<group>"; };
+		F802BA52247EF78500F28AA2 /* CircleRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleRing.swift; sourceTree = "<group>"; };
+		F896E1D62A2AA960008938E5 /* Dial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dial.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +54,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F884792628A052510043C689 /* SequenceBuilderExamples in Frameworks */,
+				F802BA50247DD71600F28AA2 /* SteinerCircleModel in Frameworks */,
+				F884792428A052510043C689 /* SequenceBuilder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,9 +73,11 @@
 		F802BA20247DD64E00F28AA2 = {
 			isa = PBXGroup;
 			children = (
+				F802BA4D247DD6C200F28AA2 /* SteinerCircleModel */,
 				F802BA2B247DD64E00F28AA2 /* DSSteinerCircles */,
 				F802BA41247DD64F00F28AA2 /* DSSteinerCirclesTests */,
 				F802BA2A247DD64E00F28AA2 /* Products */,
+				F802BA4E247DD71600F28AA2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,6 +95,9 @@
 			children = (
 				F802BA2C247DD64E00F28AA2 /* AppDelegate.swift */,
 				F802BA2E247DD64E00F28AA2 /* ContentView.swift */,
+				F802BA52247EF78500F28AA2 /* CircleRing.swift */,
+				F896E1D62A2AA960008938E5 /* Dial.swift */,
+				F802BA51247EF78500F28AA2 /* CircleLabeled.swift */,
 				F802BA30247DD64F00F28AA2 /* Assets.xcassets */,
 				F802BA35247DD64F00F28AA2 /* Main.storyboard */,
 				F802BA38247DD64F00F28AA2 /* Info.plist */,
@@ -106,6 +124,13 @@
 			path = DSSteinerCirclesTests;
 			sourceTree = "<group>";
 		};
+		F802BA4E247DD71600F28AA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,6 +147,11 @@
 			dependencies = (
 			);
 			name = DSSteinerCircles;
+			packageProductDependencies = (
+				F802BA4F247DD71600F28AA2 /* SteinerCircleModel */,
+				F884792328A052510043C689 /* SequenceBuilder */,
+				F884792528A052510043C689 /* SequenceBuilderExamples */,
+			);
 			productName = DSSteinerCircles;
 			productReference = F802BA29247DD64E00F28AA2 /* DSSteinerCircles.app */;
 			productType = "com.apple.product-type.application";
@@ -151,7 +181,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1400;
 				ORGANIZATIONNAME = "Don Sleeter";
 				TargetAttributes = {
 					F802BA28247DD64E00F28AA2 = {
@@ -164,7 +194,7 @@
 				};
 			};
 			buildConfigurationList = F802BA24247DD64E00F28AA2 /* Build configuration list for PBXProject "DSSteinerCircles" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -172,6 +202,9 @@
 				Base,
 			);
 			mainGroup = F802BA20247DD64E00F28AA2;
+			packageReferences = (
+				F884792228A052510043C689 /* XCRemoteSwiftPackageReference "SequenceBuilder" */,
+			);
 			productRefGroup = F802BA2A247DD64E00F28AA2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -208,6 +241,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F802BA2F247DD64E00F28AA2 /* ContentView.swift in Sources */,
+				F802BA54247EF78500F28AA2 /* CircleRing.swift in Sources */,
+				F896E1D72A2AA960008938E5 /* Dial.swift in Sources */,
+				F802BA53247EF78500F28AA2 /* CircleLabeled.swift in Sources */,
 				F802BA2D247DD64E00F28AA2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,6 +304,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -275,6 +312,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -292,7 +330,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -328,6 +366,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -335,6 +374,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -346,7 +386,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -360,8 +400,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DSSteinerCircles/DSSteinerCircles.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"DSSteinerCircles/Preview Content\"";
 				DEVELOPMENT_TEAM = 96J2PPD4HG;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -371,7 +413,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stonecanyon.DSSteinerCircles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -383,8 +425,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DSSteinerCircles/DSSteinerCircles.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"DSSteinerCircles/Preview Content\"";
 				DEVELOPMENT_TEAM = 96J2PPD4HG;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -394,7 +438,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stonecanyon.DSSteinerCircles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -408,6 +452,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 96J2PPD4HG;
 				INFOPLIST_FILE = DSSteinerCirclesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -415,7 +460,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stonecanyon.DSSteinerCirclesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -430,6 +475,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 96J2PPD4HG;
 				INFOPLIST_FILE = DSSteinerCirclesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -437,7 +483,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stonecanyon.DSSteinerCirclesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -476,6 +522,34 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F884792228A052510043C689 /* XCRemoteSwiftPackageReference "SequenceBuilder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/andtie/SequenceBuilder";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F802BA4F247DD71600F28AA2 /* SteinerCircleModel */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SteinerCircleModel;
+		};
+		F884792328A052510043C689 /* SequenceBuilder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F884792228A052510043C689 /* XCRemoteSwiftPackageReference "SequenceBuilder" */;
+			productName = SequenceBuilder;
+		};
+		F884792528A052510043C689 /* SequenceBuilderExamples */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F884792228A052510043C689 /* XCRemoteSwiftPackageReference "SequenceBuilder" */;
+			productName = SequenceBuilderExamples;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F802BA21247DD64E00F28AA2 /* Project object */;
 }
