@@ -38,8 +38,8 @@ public struct SteinerCircle {
   // Given θ and R, the formula for r is: r = R ( 1 − sin θ )/( 1 + sin θ )
   public func innerRadius() -> CGFloat {
     let uncorrectedInnerRadius = outerRadius * ( ( 1 - sineTheta) / (1 + sineTheta) )
-    let uncorrectedRho = uncorrectedInnerRadius * sineTheta / (1.0 - sineTheta)
-    let gapCorrectredInnerRadius = uncorrectedInnerRadius + (1 - gap) * (uncorrectedRho)
+    //let uncorrectedRho = uncorrectedInnerRadius * sineTheta / (1.0 - sineTheta)
+    //let gapCorrectredInnerRadius = uncorrectedInnerRadius + (1 - gap) * (uncorrectedRho)
     // need to account for gap here, too
     //let gapEffectedRho = (1 - gap) * steinerCircle.rho()
     //innerRadius = outerRadius + gapEffectedRho * 2
