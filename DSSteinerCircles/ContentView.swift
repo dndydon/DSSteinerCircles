@@ -10,8 +10,8 @@ import SwiftUI
 import SteinerCircleModel
 
 struct ContentView: View {
-  
-  @State private var count: Double = 8
+
+  @State var count: Double = 5  // why Double?  Because Slider needs it?
   @State private var gap: Double = 0.0
   @State private var thickness: CGFloat = 4.0
   
@@ -21,6 +21,13 @@ struct ContentView: View {
         .foregroundColor(.secondary)
         .scaleEffect(0.90)
         .aspectRatio(1.0, contentMode: .fit)
+
+      GroupBox(label: Text("Configuration:")) {
+        ControlPanel(count: self.$count,
+                     gap: self.$gap,
+                     thickness: self.$thickness)
+      }
+      .padding([.horizontal, .bottom])
     }
   }
 }
@@ -29,5 +36,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
     ContentView()
+      .frame(width: 450, height: 600)
   }
 }

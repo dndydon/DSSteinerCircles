@@ -15,32 +15,35 @@ public struct SteinerCircle {
     }
   }
   
-  public var gap: CGFloat = .zero
+  public var gap: CGFloat //= .zero // make this initializable and compute innerRadius from it.
   
   //  The angle 2θ between the centers of the Steiner-chain circles is 360°/n
-  //  so, θ = 180/N, theta = Double(180.0 / Double(circleCount))
+  //  so, θ = 180/N, theta = Double(180.0 / Double(circleCount)).asRadians
   public var theta: Double // in degrees.  use this to draw the Steiner-chain circles
   
   private var sineTheta: CGFloat   // = CGFloat(Math.sine(degrees: theta))
   
   public var direction: CGFloat? = -90
   
-  public init(outerRadius: CGFloat, circleCount: Int) {
+  public init(outerRadius: CGFloat, circleCount: Int, gap: CGFloat = .zero) {
     self.outerRadius = outerRadius
     self.circleCount = circleCount
     self.direction = -90
     self.theta = Double(180.0 / Double(circleCount)).asRadians
     self.sineTheta = CGFloat(sin(theta))
-    //print(description)
+    self.gap = gap  // range .zero to 1
+    print(description)
   }
   
   // Given θ and R, the formula for r is: r = R ( 1 − sin θ )/( 1 + sin θ )
   public func innerRadius() -> CGFloat {
-    let innerRadius = outerRadius * ( ( 1 - sineTheta) / (1 + sineTheta) )
-//    if innerRadius <= 0.01 {
-//      return CGFloat.zero
-//    }
-    return innerRadius
+    let uncorrectedInnerRadius = outerRadius * ( ( 1 - sineTheta) / (1 + sineTheta) )
+    let uncorrectedRho = uncorrectedInnerRadius * sineTheta / (1.0 - sineTheta)
+    let gapCorrectredInnerRadius = uncorrectedInnerRadius + (1 - gap) * (uncorrectedRho)
+    // need to account for gap here, too
+    //let gapEffectedRho = (1 - gap) * steinerCircle.rho()
+    //innerRadius = outerRadius + gapEffectedRho * 2
+    return uncorrectedInnerRadius //gapCorrectredInnerRadius
   }
   
   // rho (written as ρ) is the radius of the Steiner-chain circles
@@ -57,7 +60,7 @@ public struct SteinerCircle {
     }
     let rho = innerRadius() * sineTheta / (1.0 - sineTheta)  // problem when sineTheta is 1 (for two circles)
     if rho > 0 {
-      return rho
+      return (1 - gap) * rho // new gap correction, beware complications downstream
     } else {
       return CGFloat.zero
     }

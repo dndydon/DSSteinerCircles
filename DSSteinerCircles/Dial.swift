@@ -11,7 +11,10 @@
 import SwiftUI
 
 struct Dial: View {
+
   @Binding public var value: Double
+  public let innerRadius: Double
+
   public var minValue: Double = -.greatestFiniteMagnitude // 0
   public var maxValue: Double = .greatestFiniteMagnitude
   public var divisor: Double = 1
@@ -40,21 +43,6 @@ struct Dial: View {
   }
 
   var metallicGradient: AngularGradient {
-//    let spectrum = [
-//      Color(UIColor.systemGray2),
-//      Color(UIColor.systemGray3),
-//      Color(UIColor.systemGray4),
-//      Color(UIColor.systemGray5),
-//      Color(UIColor.systemGray4),
-//      Color(UIColor.systemGray3),
-//      Color(UIColor.systemGray2),
-//      Color(UIColor.systemGray3),
-//      Color(UIColor.systemGray4),
-//      Color(UIColor.systemGray5),
-//      Color(UIColor.systemGray4),
-//      Color(UIColor.systemGray3),
-//      Color(UIColor.systemGray2),
-//    ]
 
     let mySpectrum = [
       Color.black,
@@ -80,15 +68,17 @@ struct Dial: View {
       ZStack() {
         Circle()
           .fill(metallicGradient)
-          .opacity(0.68)
+          .opacity(0.8)
           .rotationEffect(.init(degrees: 90), anchor: .center)
-          .shadow(color: Color.gray, radius: 14)
+          //.shadow(color: Color.gray, radius: 14)
 
         Circle()
           .fill(metallicGradient)
           //.opacity(0.1)
-          .scaleEffect(0.97, anchor: .center)
+          .scaleEffect(innerRadius, anchor: .center)
       }
+      //.scaleEffect(innerRadius, anchor: UnitPoint(x: 0.50, y: 0.50))
+
       .rotationEffect(dialAngle)
       .gesture(rotationDragGesture(geometry: geometry))
     }
@@ -154,7 +144,7 @@ struct Dial: View {
 
 struct Dial_Previews: PreviewProvider {
   static var previews: some View {
-    Dial(value: .constant(0))
+    Dial(value: .constant(0), innerRadius: 0.97)
       .frame(width: 250)
       .padding(.all, 24)
   }

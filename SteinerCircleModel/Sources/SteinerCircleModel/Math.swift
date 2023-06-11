@@ -42,6 +42,7 @@ public extension CGPoint {
 
 /// the angle between the center and the touchPoint is
 /// myradians = atan2(touchPointY-centerY, touchPointX-centerX)
+@available(iOS 13.0, *)
 @available(OSX 10.15, *)
 public func dragToRotation(value: DragGesture.Value, around center: CGPoint = .zero) -> Double {
   /*

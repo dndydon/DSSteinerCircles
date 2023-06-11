@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F802BA2D247DD64E00F28AA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F802BA2C247DD64E00F28AA2 /* AppDelegate.swift */; };
+		F802BA2D247DD64E00F28AA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F802BA2C247DD64E00F28AA2 /* AppDelegate.swift */; platformFilters = (macos, ); };
 		F802BA2F247DD64E00F28AA2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F802BA2E247DD64E00F28AA2 /* ContentView.swift */; };
 		F802BA31247DD64F00F28AA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F802BA30247DD64F00F28AA2 /* Assets.xcassets */; };
 		F802BA34247DD64F00F28AA2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F802BA33247DD64F00F28AA2 /* Preview Assets.xcassets */; };
-		F802BA37247DD64F00F28AA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F802BA35247DD64F00F28AA2 /* Main.storyboard */; };
+		F802BA37247DD64F00F28AA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F802BA35247DD64F00F28AA2 /* Main.storyboard */; platformFilters = (macos, ); };
 		F802BA43247DD64F00F28AA2 /* DSSteinerCirclesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F802BA42247DD64F00F28AA2 /* DSSteinerCirclesTests.swift */; };
 		F802BA50247DD71600F28AA2 /* SteinerCircleModel in Frameworks */ = {isa = PBXBuildFile; productRef = F802BA4F247DD71600F28AA2 /* SteinerCircleModel */; };
 		F802BA53247EF78500F28AA2 /* CircleLabeled.swift in Sources */ = {isa = PBXBuildFile; fileRef = F802BA51247EF78500F28AA2 /* CircleLabeled.swift */; };
 		F802BA54247EF78500F28AA2 /* CircleRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F802BA52247EF78500F28AA2 /* CircleRing.swift */; };
+		F83B2BDC2A2BBC2200121D6A /* ControlPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B2BDB2A2BBC2200121D6A /* ControlPanel.swift */; };
 		F884792428A052510043C689 /* SequenceBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = F884792328A052510043C689 /* SequenceBuilder */; };
 		F884792628A052510043C689 /* SequenceBuilderExamples in Frameworks */ = {isa = PBXBuildFile; productRef = F884792528A052510043C689 /* SequenceBuilderExamples */; };
 		F896E1D72A2AA960008938E5 /* Dial.swift in Sources */ = {isa = PBXBuildFile; fileRef = F896E1D62A2AA960008938E5 /* Dial.swift */; };
@@ -46,6 +47,7 @@
 		F802BA4D247DD6C200F28AA2 /* SteinerCircleModel */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SteinerCircleModel; sourceTree = "<group>"; };
 		F802BA51247EF78500F28AA2 /* CircleLabeled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleLabeled.swift; sourceTree = "<group>"; };
 		F802BA52247EF78500F28AA2 /* CircleRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleRing.swift; sourceTree = "<group>"; };
+		F83B2BDB2A2BBC2200121D6A /* ControlPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPanel.swift; sourceTree = "<group>"; };
 		F896E1D62A2AA960008938E5 /* Dial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dial.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +97,7 @@
 			children = (
 				F802BA2C247DD64E00F28AA2 /* AppDelegate.swift */,
 				F802BA2E247DD64E00F28AA2 /* ContentView.swift */,
+				F83B2BDB2A2BBC2200121D6A /* ControlPanel.swift */,
 				F802BA52247EF78500F28AA2 /* CircleRing.swift */,
 				F896E1D62A2AA960008938E5 /* Dial.swift */,
 				F802BA51247EF78500F28AA2 /* CircleLabeled.swift */,
@@ -240,6 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F83B2BDC2A2BBC2200121D6A /* ControlPanel.swift in Sources */,
 				F802BA2F247DD64E00F28AA2 /* ContentView.swift in Sources */,
 				F802BA54247EF78500F28AA2 /* CircleRing.swift in Sources */,
 				F896E1D72A2AA960008938E5 /* Dial.swift in Sources */,
@@ -416,6 +420,9 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stonecanyon.DSSteinerCircles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -441,6 +448,9 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stonecanyon.DSSteinerCircles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
