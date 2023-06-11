@@ -13,7 +13,7 @@ import SwiftUI
 struct Dial: View {
 
   @Binding public var value: Double
-  public let innerRadius: Double
+  public var innerRadius: Double
 
   public var minValue: Double = -.greatestFiniteMagnitude // 0
   public var maxValue: Double = .greatestFiniteMagnitude

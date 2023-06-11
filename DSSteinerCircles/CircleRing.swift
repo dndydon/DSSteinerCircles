@@ -24,7 +24,7 @@ struct CircleRing: View {
     self.count = count
     self.thickness = thickness
     self.gap = gap
-    self.steinerCircle = SteinerCircle(outerRadius: 1, circleCount: count)
+    self.steinerCircle = SteinerCircle(outerRadius: 1, circleCount: count, gap: gap)
   }
 
   public func rho() -> CGFloat {

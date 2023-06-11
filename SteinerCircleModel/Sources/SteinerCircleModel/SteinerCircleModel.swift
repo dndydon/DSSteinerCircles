@@ -1,21 +1,13 @@
 import SwiftUI
 
+/// Steiner Chain algorithm. Given count, gap, and overall radius, compute circles
 public struct SteinerCircle {
   
-  public var outerRadius: CGFloat {
-    didSet {
-      print("outerRadius set to \(outerRadius)")
-    }
-  }
+  public let outerRadius: CGFloat
+
+  public var circleCount: Int
   
-  public var circleCount: Int {
-    didSet {
-      self.theta = 180.0 / Double(circleCount)
-      self.sineTheta = CGFloat(sin(theta))
-    }
-  }
-  
-  public var gap: CGFloat //= .zero // make this initializable and compute innerRadius from it.
+  public var gap: CGFloat
   
   //  The angle 2θ between the centers of the Steiner-chain circles is 360°/n
   //  so, θ = 180/N, theta = Double(180.0 / Double(circleCount)).asRadians
@@ -32,33 +24,42 @@ public struct SteinerCircle {
     self.theta = Double(180.0 / Double(circleCount)).asRadians
     self.sineTheta = CGFloat(sin(theta))
     self.gap = gap  // range .zero to 1
-    print(description)
+    //self.innerRadius = outerRadius - 2 * rho()
+    //print(description)
   }
   
+//  // Given θ and R, the formula for r is: r = R ( 1 − sin θ )/( 1 + sin θ )
+//  public func innerRadius() -> CGFloat {
+//    let uncorrectedInnerRadius = outerRadius * ( 1 - sineTheta) / (1 + sineTheta)
+//    // account for gap here, too
+//    //let uncorrectedRho = uncorrectedInnerRadius * sineTheta / (1.0 - sineTheta)
+//    //let gapCorrectredInnerRadius = uncorrectedInnerRadius + (1 - gap) * (uncorrectedRho)
+//    //let gapEffectedRho = (1 - gap) * steinerCircle.rho()
+//    //innerRadius = outerRadius + gapEffectedRho * 2
+//    return uncorrectedInnerRadius //gapCorrectredInnerRadius
+//  }
+
   // Given θ and R, the formula for r is: r = R ( 1 − sin θ )/( 1 + sin θ )
+  // new: Given θ and R, the formula for r is: r = R − 2 * ρ
   public func innerRadius() -> CGFloat {
-    let uncorrectedInnerRadius = outerRadius * ( ( 1 - sineTheta) / (1 + sineTheta) )
-    //let uncorrectedRho = uncorrectedInnerRadius * sineTheta / (1.0 - sineTheta)
-    //let gapCorrectredInnerRadius = uncorrectedInnerRadius + (1 - gap) * (uncorrectedRho)
-    // need to account for gap here, too
-    //let gapEffectedRho = (1 - gap) * steinerCircle.rho()
-    //innerRadius = outerRadius + gapEffectedRho * 2
-    return uncorrectedInnerRadius //gapCorrectredInnerRadius
+    // old way: let innerRadius = outerRadius * ( ( 1 - sineTheta) / (1 + sineTheta) )
+    let innerRadius = outerRadius - 2 * rho() * (1 - gap)// not yet dealing with gap
+    return innerRadius
   }
-  
+
   // rho (written as ρ) is the radius of the Steiner-chain circles
-  // Given θ and r, the formula for rho (ρ) is: ρ = ( r sin θ )/( 1 − sin θ )
   public func rho() -> CGFloat {
-    guard circleCount != 2 else {
-      let twoRho = outerRadius/2
-      //print("Found Two Rho", twoRho)
-      return twoRho
-    }
     guard circleCount != 1 else {
-      //print("Found One Whole Dude", outerRadius)
       return outerRadius
     }
-    let rho = innerRadius() * sineTheta / (1.0 - sineTheta)  // problem when sineTheta is 1 (for two circles)
+
+    // the old way
+    // Given θ and r, the formula for rho (ρ) is: ρ = ( r sin θ )/( 1 − sin θ )
+    // let rho = innerRadius() * sineTheta / (1.0 - sineTheta)  // problem when sineTheta is 1 (for two circles)
+
+    // given θ and R, the formula for rho (ρ) is:
+    // R sin θ / ( 1 + sin θ )
+    let rho = outerRadius * sineTheta / (1 + sineTheta)
     if rho > 0 {
       return (1 - gap) * rho // new gap correction, beware complications downstream
     } else {
@@ -66,11 +67,11 @@ public struct SteinerCircle {
     }
   }
   
-  public func centerPoints() -> [CGPoint] {
-    let points = Array(repeating: CGPoint.zero, count: circleCount)
-    // using direction and gap, compute the center point of each circle and 
-    return points
-  }
+//  public func centerPoints() -> [CGPoint] {
+//    let points = Array(repeating: CGPoint.zero, count: circleCount)
+//    // using direction and gap, compute the center point of each circle and 
+//    return points
+//  }
 }
 
 extension SteinerCircle : CustomStringConvertible, CustomDebugStringConvertible {
