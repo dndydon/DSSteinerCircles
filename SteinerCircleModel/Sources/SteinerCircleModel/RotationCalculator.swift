@@ -20,6 +20,7 @@ import Foundation
 
 import SwiftUI
 
+/// Unused
 struct RotationCalculator {
 
   // midpoint for gesture recognizer

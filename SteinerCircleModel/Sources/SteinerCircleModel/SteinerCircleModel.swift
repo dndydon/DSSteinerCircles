@@ -15,15 +15,15 @@ public struct SteinerCircle {
   
   private var sineTheta: CGFloat   // = CGFloat(Math.sine(degrees: theta))
   
-  public var direction: CGFloat? = -90
-  
-  public init(outerRadius: CGFloat, circleCount: Int, gap: CGFloat = .zero) {
+  public var direction: CGFloat? = -90  // this is "up" in SwiftUI
+
+  public init(outerRadius: CGFloat, circleCount: Int, gap: CGFloat = .leastNonzeroMagnitude) {
     self.outerRadius = outerRadius
     self.circleCount = circleCount
     self.direction = -90
     self.theta = Double(180.0 / Double(circleCount)).asRadians
-    self.sineTheta = CGFloat(sin(theta))
-    self.gap = gap  // range .zero to 1
+    self.sineTheta = sin(theta) //CGFloat(sin(theta))
+    self.gap = gap > 0.001 ? gap : 0.001  // range 0 to 1
     //self.innerRadius = outerRadius - 2 * rho()
     //print(description)
   }
@@ -40,10 +40,10 @@ public struct SteinerCircle {
 //  }
 
   // Given θ and R, the formula for r is: r = R ( 1 − sin θ )/( 1 + sin θ )
-  // new: Given θ and R, the formula for r is: r = R − 2 * ρ
+  // new way: Given θ and R, the formula for r is: r = R − 2 * ρ
   public func innerRadius() -> CGFloat {
     // old way: let innerRadius = outerRadius * ( ( 1 - sineTheta) / (1 + sineTheta) )
-    let innerRadius = outerRadius - 2 * rho() * (1 - gap)// not yet dealing with gap
+    let innerRadius = outerRadius - 2 * rho() * (1 - gap)
     return innerRadius
   }
 
@@ -60,10 +60,11 @@ public struct SteinerCircle {
     // given θ and R, the formula for rho (ρ) is:
     // R sin θ / ( 1 + sin θ )
     let rho = outerRadius * sineTheta / (1 + sineTheta)
-    if rho > 0 {
-      return (1 - gap) * rho // new gap correction, beware complications downstream
+    if rho > .zero {
+      let gapCorrection = (1 + gap) // new gap correction, beware complications downstream
+      return rho * gapCorrection
     } else {
-      return CGFloat.zero
+      return .zero
     }
   }
   

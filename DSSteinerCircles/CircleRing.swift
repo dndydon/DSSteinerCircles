@@ -28,8 +28,6 @@ struct CircleRing: View {
   }
 
   public func rho() -> CGFloat {
-    //let circleSet = SteinerCircle(outerRadius: 1, circleCount: count)
-    // print("\(String(describing: circleSet))")
     let gapEffectedRho = (1 - gap) * steinerCircle.rho()
     //print("gapEffected vs. regular Rho: ", gapEffectedRho, steinerCircle.rho())
     return gapEffectedRho
@@ -42,13 +40,14 @@ struct CircleRing: View {
         .inset(by: -thickness/2)
         .stroke(style: StrokeStyle(lineWidth: thickness))
         .scaleEffect(steinerCircle.innerRadius(), anchor: UnitPoint(x: 0.50, y: 0.50))
-        .foregroundColor(Color(.yellow).opacity(0.3))
+        .foregroundColor(Color(.yellow).opacity(0.75))
 
       // Dial circular rotation algorithm -- one finger or cursor rotates it
       // make this a protocol?
       Dial(value: $rotationAngle, innerRadius: steinerCircle.innerRadius())
-        .opacity(0.75)
-        .aspectRatio(1.0, contentMode: .fit)
+          .opacity(0.75)
+          .aspectRatio(1.0, contentMode: .fit)
+          //.onTapGesture(count: 2, perform: clearSelection)
 
       ForEach(1...count, id: \.self) { idx in
         CircleLabeled(label: String(idx))

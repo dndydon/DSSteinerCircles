@@ -17,7 +17,7 @@ struct ContentView: View {
   
   var body: some View {
     VStack {
-      CircleRing(count: Int(count), thickness: thickness, gap: CGFloat(gap))
+      CircleRing(count: Int(count), thickness: thickness, gap: gap)
         .foregroundColor(.secondary)
         .scaleEffect(0.90)
         .aspectRatio(1.0, contentMode: .fit)

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>top-level-items</key>
+	<array>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingLineNumber</key>
+					<string>25</string>
+					<key>StartingLineNumber</key>
+					<string>25</string>
+					<key>Timestamp</key>
+					<string>708673348.849741</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>SteinerCircleModel/Sources/SteinerCircleModel/SteinerCircleModel.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>    self.gap = gap &gt; 0.001 ? gap : 0.001  // range 0 to 1
+</string>
+				<key>leading</key>
+				<string>    self.theta = Double(180.0 / Double(circleCount)).asRadians
+    self.sineTheta = sin(theta) //CGFloat(sin(theta))
+</string>
+				<key>trailing</key>
+				<string>    //self.innerRadius = outerRadius - 2 * rho()
+    //print(description)
+  }
+</string>
+			</dict>
+			<key>title</key>
+			<string>0.001 is better than .leastNonzeroMagnitude because it fixes the bug:  "ignoring singular matrix: ProjectionTransform(m11: 5e-324, m12: 0.0, ..."</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+	</array>
+</dict>
+</plist>

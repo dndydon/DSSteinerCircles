@@ -22,7 +22,7 @@ struct ControlPanel: View {
           }.frame(width: 110, height: 30, alignment: .leading)
         }.padding(.horizontal)
 
-        Slider(value: $gap, in: 0.0...1.0) {
+        Slider(value: $gap, in: 0.0...0.9999) {
           Text("Gap: \(gap, specifier: "%.3f")")
             .frame(width: 110, height: 30, alignment: .leading)
         }.padding(.horizontal)

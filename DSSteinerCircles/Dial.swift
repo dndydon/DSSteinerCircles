@@ -66,13 +66,13 @@ struct Dial: View {
   var body: some View {
     GeometryReader { geometry in
       ZStack() {
-        Circle()
+        Circle() // outerCircle
           .fill(metallicGradient)
           .opacity(0.8)
           .rotationEffect(.init(degrees: 90), anchor: .center)
           //.shadow(color: Color.gray, radius: 14)
 
-        Circle()
+        Circle() // innerCircle
           .fill(metallicGradient)
           //.opacity(0.1)
           .scaleEffect(innerRadius, anchor: .center)
