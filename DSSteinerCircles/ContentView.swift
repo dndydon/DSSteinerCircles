@@ -11,14 +11,16 @@ import SteinerCircleModel
 
 struct ContentView: View {
 
-  @State var count: Double = 5  // why Double?  Because Slider needs it?
+  @State private var isPrime: Bool = false
+  @State private var count: Double = 5  // why Double?  Because Slider needs it?
   @State private var gap: Double = 0.0
   @State private var thickness: CGFloat = 4.0
-  
+  @State private var mainColor: Color = .secondary
+
   var body: some View {
     VStack {
       CircleRing(count: Int(count), thickness: thickness, gap: gap)
-        .foregroundColor(.secondary)
+        .foregroundColor(mainColor)
         .scaleEffect(0.90)
         .aspectRatio(1.0, contentMode: .fit)
 

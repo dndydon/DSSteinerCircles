@@ -9,12 +9,16 @@
 			<dict>
 				<key>location-parameters</key>
 				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>25</string>
+					<string>26</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
 					<key>StartingLineNumber</key>
 					<string>25</string>
 					<key>Timestamp</key>
-					<string>708673348.849741</string>
+					<string>737706995.949681</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -44,6 +48,53 @@
 			</dict>
 			<key>title</key>
 			<string>0.001 is better than .leastNonzeroMagnitude because it fixes the bug:  "ignoring singular matrix: ProjectionTransform(m11: 5e-324, m12: 0.0, ..."</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>49</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>48</string>
+					<key>Timestamp</key>
+					<string>737777614.46516</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>DSSteinerCircles/CircleRing.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>      print(rotationAngle)
+</string>
+				<key>leading</key>
+				<string>    withAnimation(.spring) {
+      // figure out resetting selection here
+</string>
+				<key>trailing</key>
+				<string>      rotationAngle = 0.0
+    }
+    for radians in stride(from: 0.0, to: .pi * 2, by: .pi / 2) {
+</string>
+			</dict>
+			<key>title</key>
+			<string>something's wrong with rotationAngle</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>

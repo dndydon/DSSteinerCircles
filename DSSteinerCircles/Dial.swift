@@ -3,17 +3,19 @@
 //  DSSteinerCircles
 //
 //  Created by Don Sleeter on 6/2/23.
-//  Copyright © 2023 Don Sleeter. All rights reserved.
-//
+/// Copyright: https://gist.github.com/ts95/9f8e05380824c6ca999ab3bc1ff8541f
 
-/// https://gist.github.com/ts95/9f8e05380824c6ca999ab3bc1ff8541f
-///
+
 import SwiftUI
+
+/// rotating dial view courtesy of
+/// https://gist.github.com/ts95/9f8e05380824c6ca999ab3bc1ff8541f
 
 struct Dial: View {
 
   @Binding public var value: Double
   public var innerRadius: Double
+  public var thickness: CGFloat
 
   public var minValue: Double = -.greatestFiniteMagnitude // 0
   public var maxValue: Double = .greatestFiniteMagnitude
@@ -41,7 +43,8 @@ struct Dial: View {
   var adjustedMaxValue: Double {
     (maxValue * adjustedDivisor) / adjustedStepping
   }
-
+  
+  /// Cool machined look of a metallic dial
   var metallicGradient: AngularGradient {
 
     let mySpectrum = [
@@ -69,15 +72,15 @@ struct Dial: View {
         Circle() // outerCircle
           .fill(metallicGradient)
           .opacity(0.8)
-          .rotationEffect(.init(degrees: 90), anchor: .center)
-          //.shadow(color: Color.gray, radius: 14)
+          .rotationEffect(.init(degrees: 45), anchor: .center)
+          .shadow(color: .pink, radius: 4)
 
         Circle() // innerCircle
+          .inset(by: thickness)
           .fill(metallicGradient)
-          //.opacity(0.1)
+          .opacity(0.3)
           .scaleEffect(innerRadius, anchor: .center)
       }
-      //.scaleEffect(innerRadius, anchor: UnitPoint(x: 0.50, y: 0.50))
 
       .rotationEffect(dialAngle)
       .gesture(rotationDragGesture(geometry: geometry))
@@ -134,7 +137,12 @@ struct Dial: View {
   private func abs(_ angle: Angle) -> Angle {
     .radians(Swift.abs(angle.radians))
   }
-
+  
+  /// Elegant rotation angle function of a point arount the center
+  /// - Parameters:
+  ///   - point: CGPoint (e.g. from a touch)
+  ///   - center: CGPoint
+  /// - Returns: Angle
   private func rotationAngle(of point: CGPoint, around center: CGPoint) -> Angle {
     let deltaY = point.y - center.y
     let deltaX = point.x - center.x
@@ -144,8 +152,8 @@ struct Dial: View {
 
 struct Dial_Previews: PreviewProvider {
   static var previews: some View {
-    Dial(value: .constant(0), innerRadius: 0.97)
-      .frame(width: 250)
+    Dial(value: .constant(50), innerRadius: 0.97, thickness: 5.0)
+      .frame(width: 350)
       .padding(.all, 24)
   }
 }

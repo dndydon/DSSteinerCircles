@@ -17,7 +17,7 @@ public struct SteinerCircle {
   
   public var direction: CGFloat? = -90  // this is "up" in SwiftUI
 
-  public init(outerRadius: CGFloat, circleCount: Int, gap: CGFloat = .leastNonzeroMagnitude) {
+  public init(outerRadius: CGFloat, circleCount: Int, gap: CGFloat = 0.001) {
     self.outerRadius = outerRadius
     self.circleCount = circleCount
     self.direction = -90

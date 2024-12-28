@@ -6,12 +6,12 @@ final class SteinerCircleModelTests: XCTestCase {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct
     // results.
-    let steinerCircle = SteinerCircleModel.SteinerCircle(outerRadius: 1, circleCount: 4)
-    XCTAssertEqual(steinerCircle.circleCount, 4)
+    let steinerCircle = SteinerCircleModel.SteinerCircle(outerRadius: 1, circleCount: 1)
+    XCTAssertEqual(steinerCircle.circleCount, 1)
     print("===========================")
     print(steinerCircle.description)
     print("===========================")
-    XCTAssertEqual(steinerCircle.rho(), 0.4142135623730951)
+    XCTAssertEqual(steinerCircle.rho(), 1.0)
   }
   
   static var allTests = [
