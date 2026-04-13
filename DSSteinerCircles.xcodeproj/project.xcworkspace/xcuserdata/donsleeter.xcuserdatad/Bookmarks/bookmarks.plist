@@ -81,16 +81,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>      print(rotationAngle)
+				<string>      print("rotationAngle:", rotationAngle)
 </string>
 				<key>leading</key>
 				<string>    withAnimation(.spring) {
-      // figure out resetting selection here
+        // figure out resetting selection here
 </string>
 				<key>trailing</key>
 				<string>      rotationAngle = 0.0
     }
-    for radians in stride(from: 0.0, to: .pi * 2, by: .pi / 2) {
+//    for radians in stride(from: 0.0, to: .pi * 2, by: .pi / 2) {
 </string>
 			</dict>
 			<key>title</key>

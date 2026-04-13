@@ -15,7 +15,7 @@ import Observation
 //
 // Leaf, Branch(es), Tree
 
-// I want to create, view, list, select, edit, delete, and save trees (as iCloud documents) with these things
+// I want to create, view, list, select, edit, delete, and save trees with these things
 
 @Observable
 class LeafModel {

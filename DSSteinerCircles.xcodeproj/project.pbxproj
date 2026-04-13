@@ -19,6 +19,7 @@
 		F83B2BDC2A2BBC2200121D6A /* ControlPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B2BDB2A2BBC2200121D6A /* ControlPanel.swift */; };
 		F884792428A052510043C689 /* SequenceBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = F884792328A052510043C689 /* SequenceBuilder */; };
 		F884792628A052510043C689 /* SequenceBuilderExamples in Frameworks */ = {isa = PBXBuildFile; productRef = F884792528A052510043C689 /* SequenceBuilderExamples */; };
+		F887030C2F8CB4AE006B51F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F887030B2F8CB4AE006B51F9 /* Color.swift */; };
 		F896E1D72A2AA960008938E5 /* Dial.swift in Sources */ = {isa = PBXBuildFile; fileRef = F896E1D62A2AA960008938E5 /* Dial.swift */; };
 		F8BB5B8F2A685DF800E7FF7F /* LeafModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB5B8E2A685DF800E7FF7F /* LeafModel.swift */; };
 		F8BB5B902A685DF800E7FF7F /* LeafModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB5B8E2A685DF800E7FF7F /* LeafModel.swift */; };
@@ -50,6 +51,7 @@
 		F802BA51247EF78500F28AA2 /* CircleLabeled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleLabeled.swift; sourceTree = "<group>"; };
 		F802BA52247EF78500F28AA2 /* CircleRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleRing.swift; sourceTree = "<group>"; };
 		F83B2BDB2A2BBC2200121D6A /* ControlPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPanel.swift; sourceTree = "<group>"; };
+		F887030B2F8CB4AE006B51F9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		F896E1D62A2AA960008938E5 /* Dial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dial.swift; sourceTree = "<group>"; };
 		F8BB5B8E2A685DF800E7FF7F /* LeafModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeafModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,6 +107,7 @@
 				F802BA52247EF78500F28AA2 /* CircleRing.swift */,
 				F896E1D62A2AA960008938E5 /* Dial.swift */,
 				F802BA51247EF78500F28AA2 /* CircleLabeled.swift */,
+				F887030B2F8CB4AE006B51F9 /* Color.swift */,
 				F802BA30247DD64F00F28AA2 /* Assets.xcassets */,
 				F802BA35247DD64F00F28AA2 /* Main.storyboard */,
 				F802BA38247DD64F00F28AA2 /* Info.plist */,
@@ -197,7 +200,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 2640;
 				ORGANIZATIONNAME = "Don Sleeter";
 				TargetAttributes = {
 					F802BA28247DD64E00F28AA2 = {
@@ -261,6 +264,7 @@
 				F8BB5B8F2A685DF800E7FF7F /* LeafModel.swift in Sources */,
 				F802BA54247EF78500F28AA2 /* CircleRing.swift in Sources */,
 				F896E1D72A2AA960008938E5 /* Dial.swift in Sources */,
+				F887030C2F8CB4AE006B51F9 /* Color.swift in Sources */,
 				F802BA53247EF78500F28AA2 /* CircleLabeled.swift in Sources */,
 				F802BA2D247DD64E00F28AA2 /* AppDelegate.swift in Sources */,
 			);
@@ -333,6 +337,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 96J2PPD4HG;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -355,6 +360,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -396,6 +402,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 96J2PPD4HG;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -411,6 +418,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
@@ -426,7 +434,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"DSSteinerCircles/Preview Content\"";
-				DEVELOPMENT_TEAM = 96J2PPD4HG;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DSSteinerCircles/Info.plist;
@@ -454,7 +461,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"DSSteinerCircles/Preview Content\"";
-				DEVELOPMENT_TEAM = 96J2PPD4HG;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DSSteinerCircles/Info.plist;
@@ -475,12 +481,10 @@
 		F802BA4B247DD64F00F28AA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 96J2PPD4HG;
 				INFOPLIST_FILE = DSSteinerCirclesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -498,12 +502,10 @@
 		F802BA4C247DD64F00F28AA2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 96J2PPD4HG;
 				INFOPLIST_FILE = DSSteinerCirclesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -73,7 +73,7 @@ struct Dial: View {
           .fill(metallicGradient)
           .opacity(0.8)
           .rotationEffect(.init(degrees: 45), anchor: .center)
-          .shadow(color: .pink, radius: 4)
+          .shadow(color: .gray, radius: 4)
 
         Circle() // innerCircle
           .inset(by: thickness)

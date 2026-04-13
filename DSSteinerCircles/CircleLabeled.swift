@@ -20,12 +20,15 @@ struct CircleLabeled: View {
   // old state variables:
   @State private var selected: Bool = false
   var label: String = "0"
+  var color: Color = .gray.opacity(0.5)
 
   var body: some View {
     ZStack {
       Circle()
-        .foregroundColor(selected ? Color.accentColor : .gray.opacity(0.5))
+        .foregroundColor(selected ? Color.accentColor : color)
         .shadow(radius: selected ? 30 : 0)
+        .overlay(selected ? Color.yellow : Color.clear,
+                 in: Circle().stroke(style: StrokeStyle(lineWidth: 8)))
       Text("\(label)")
         .font(.largeTitle)
         .scaleEffect(5)
