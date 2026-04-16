@@ -3,22 +3,18 @@
 import PackageDescription
 
 let package = Package(
-    name: "SteinerCircleModel",
-    platforms: [.macOS(.v14)],
-    products: [
-        .library(
-            name: "SteinerCircleModel",
-            targets: ["SteinerCircleModel"]),
-    ],
-    dependencies: [
-        .package(url: "https://github.com/dndydon/PrimeFactorization.git", branch: "main"),
-    ],
-    targets: [
-        .target(
-            name: "SteinerCircleModel",
-            dependencies: ["PrimeFactorization"]),
-        .testTarget(
-            name: "SteinerCircleModelTests",
-            dependencies: ["SteinerCircleModel"]),
-    ]
+  name: "SteinerCircleModel",
+  platforms: [.macOS(.v14)],
+  products: [
+    .library(
+      name: "SteinerCircleModel",
+      targets: ["SteinerCircleModel"]),
+  ],
+  targets: [
+    .target(
+      name: "SteinerCircleModel"),
+    .testTarget(
+      name: "SteinerCircleModelTests",
+      dependencies: ["SteinerCircleModel"]),
+  ]
 )

@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>17</string>
+					<string>24</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>16</string>
+					<string>23</string>
 					<key>Timestamp</key>
-					<string>797816190.5809</string>
+					<string>798013061.156386</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -37,13 +37,13 @@
 				<string>  public init(outerRadius: CGFloat, circleCount: Int, gap: CGFloat = 0.001) {
 </string>
 				<key>leading</key>
-				<string>  private var sineTheta: CGFloat
+				<string>  public let gap: CGFloat
 
 </string>
 				<key>trailing</key>
 				<string>    self.outerRadius = outerRadius
-    self.circleCount = circleCount
-    self.direction = -90
+    self.circleCount = max(1, circleCount)
+    self.gap = max(gap, 0.001)
 </string>
 			</dict>
 			<key>title</key>

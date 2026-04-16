@@ -10,7 +10,6 @@
 /// circle ring, transport controls, and configuration sliders.
 
 import SwiftUI
-import SteinerCircleModel
 
 struct ContentView: View {
 

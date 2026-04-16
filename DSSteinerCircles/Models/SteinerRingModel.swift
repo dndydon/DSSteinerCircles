@@ -18,6 +18,7 @@
 
 import SwiftUI
 import SteinerCircleModel
+import PrimeFactorization
 
 @Observable
 class SteinerRingModel: Identifiable {
@@ -136,12 +137,12 @@ class SteinerRingModel: Identifiable {
 
     /// Radius of each chain circle, adjusted for gap.
     var rho: CGFloat {
-        (1 - gap) * steinerCircle.rho()
+        (1 - gap) * steinerCircle.rho
     }
 
     /// Radius of the inner circle.
     var innerRadius: CGFloat {
-        steinerCircle.innerRadius()
+        steinerCircle.innerRadius
     }
 
     // MARK: - Slider Bridge
@@ -271,7 +272,7 @@ class SteinerRingModel: Identifiable {
         let childCount = remainingFactors.reduce(1, *)
 
         let outerSteiner = SteinerCircle(outerRadius: outerRadius, circleCount: outerCount, gap: gap)
-        let childRadius = (1 - gap) * outerSteiner.rho()
+        let childRadius = (1 - gap) * outerSteiner.rho
 
         children = (0..<outerCount).map { i in
             let child = SteinerRingModel(

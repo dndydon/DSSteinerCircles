@@ -17,6 +17,7 @@
 		F83130C92F8D5FEF00EA4B95 /* SteinerRingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83130C82F8D5FEF00EA4B95 /* SteinerRingModel.swift */; };
 		F83130CA2F8D5FEF00EA4B95 /* SteinerRingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83130C82F8D5FEF00EA4B95 /* SteinerRingModel.swift */; };
 		F83130CC2F8D6B7A00EA4B95 /* DSSteinerCirclesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83130CB2F8D6B7A00EA4B95 /* DSSteinerCirclesApp.swift */; };
+		F83257CB2F90B57E00D86DF2 /* PrimeFactorization in Frameworks */ = {isa = PBXBuildFile; productRef = F83257CA2F90B57E00D86DF2 /* PrimeFactorization */; };
 		F83B2BDC2A2BBC2200121D6A /* ControlPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B2BDB2A2BBC2200121D6A /* ControlPanel.swift */; };
 		F887030C2F8CB4AE006B51F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F887030B2F8CB4AE006B51F9 /* Color.swift */; };
 		F896933F2F9016A40067F53E /* PlayPauseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F896933E2F9016A40067F53E /* PlayPauseControl.swift */; };
@@ -62,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F83257CB2F90B57E00D86DF2 /* PrimeFactorization in Frameworks */,
 				F802BA50247DD71600F28AA2 /* SteinerCircleModel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,6 +169,7 @@
 			name = DSSteinerCircles;
 			packageProductDependencies = (
 				F802BA4F247DD71600F28AA2 /* SteinerCircleModel */,
+				F83257CA2F90B57E00D86DF2 /* PrimeFactorization */,
 			);
 			productName = DSSteinerCircles;
 			productReference = F802BA29247DD64E00F28AA2 /* DSSteinerCircles.app */;
@@ -220,6 +223,7 @@
 			);
 			mainGroup = F802BA20247DD64E00F28AA2;
 			packageReferences = (
+				F83257C92F90B56400D86DF2 /* XCRemoteSwiftPackageReference "PrimeFactorization" */,
 			);
 			productRefGroup = F802BA2A247DD64E00F28AA2 /* Products */;
 			projectDirPath = "";
@@ -293,6 +297,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -358,6 +363,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -542,10 +548,26 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		F83257C92F90B56400D86DF2 /* XCRemoteSwiftPackageReference "PrimeFactorization" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dndydon/PrimeFactorization.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		F802BA4F247DD71600F28AA2 /* SteinerCircleModel */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SteinerCircleModel;
+		};
+		F83257CA2F90B57E00D86DF2 /* PrimeFactorization */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F83257C92F90B56400D86DF2 /* XCRemoteSwiftPackageReference "PrimeFactorization" */;
+			productName = PrimeFactorization;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

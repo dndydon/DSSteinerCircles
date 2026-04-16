@@ -8,15 +8,6 @@
         "branch" : "main",
         "revision" : "4528acd4ac7659ef600be5053a43abe688008f8c"
       }
-    },
-    {
-      "identity" : "sequencebuilder",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/andtie/SequenceBuilder",
-      "state" : {
-        "revision" : "54d3d1eff31a7e35122f616840fff11899ea85b4",
-        "version" : "0.0.7"
-      }
     }
   ],
   "version" : 2
