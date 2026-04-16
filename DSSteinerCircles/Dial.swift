@@ -3,157 +3,91 @@
 //  DSSteinerCircles
 //
 //  Created by Don Sleeter on 6/2/23.
-/// Copyright: https://gist.github.com/ts95/9f8e05380824c6ca999ab3bc1ff8541f
+//  Copyright: https://gist.github.com/ts95/9f8e05380824c6ca999ab3bc1ff8541f
 
+/// Rotatable dial view with a machined metallic gradient.
+/// Drag to rotate; the bound `value` tracks cumulative degrees.
+/// Uses frame-to-frame angle deltas to avoid atan2 discontinuity jumps.
 
 import SwiftUI
 
-/// rotating dial view courtesy of
-/// https://gist.github.com/ts95/9f8e05380824c6ca999ab3bc1ff8541f
-
 struct Dial: View {
 
-  @Binding public var value: Double
-  public var innerRadius: Double
-  public var thickness: CGFloat
+    @Binding public var value: Double
+    public var innerRadius: Double
+    public var thickness: CGFloat
 
-  public var minValue: Double = -.greatestFiniteMagnitude // 0
-  public var maxValue: Double = .greatestFiniteMagnitude
-  public var divisor: Double = 1
-  public var stepping: Double = 1
-  @State private var dialAngle: Angle = .zero
-  @State private var dialShadowAngle: Angle = .zero
-  @State private var dialReleaseAngle: Angle = .zero
-  @State private var dialStartAngle: Angle = .zero
-  @State private var isDialRotating: Bool = false
-  @State private var dialRevolutions: Int = 0
+    /// Previous frame's angle during a drag, used to compute small deltas.
+    @State private var previousAngle: Angle?
 
-  var adjustedDivisor: Double {
-    divisor > 0 ? divisor : 1
-  }
-
-  var adjustedStepping: Double {
-    stepping > 0 ? stepping : 1
-  }
-
-  var adjustedMinValue: Double {
-    (minValue * adjustedDivisor) / adjustedStepping
-  }
-
-  var adjustedMaxValue: Double {
-    (maxValue * adjustedDivisor) / adjustedStepping
-  }
-  
-  /// Cool machined look of a metallic dial
-  var metallicGradient: AngularGradient {
-
-    let mySpectrum = [
-      Color.black,
-      Color.gray,
-      Color.white,
-      Color.gray,
-      Color.black,
-      Color.gray,
-      Color.white,
-      Color.gray,
-      Color.black
-    ]
-
-    return AngularGradient(
-      gradient: Gradient(colors: mySpectrum),
-      center: .center,
-      angle: .degrees(45)
-    )
-  }
-
-  var body: some View {
-    GeometryReader { geometry in
-      ZStack() {
-        Circle() // outerCircle
-          .fill(metallicGradient)
-          .opacity(0.8)
-          .rotationEffect(.init(degrees: 45), anchor: .center)
-          .shadow(color: .gray, radius: 4)
-
-        Circle() // innerCircle
-          .inset(by: thickness)
-          .fill(metallicGradient)
-          .opacity(0.3)
-          .scaleEffect(innerRadius, anchor: .center)
-      }
-
-      .rotationEffect(dialAngle)
-      .gesture(rotationDragGesture(geometry: geometry))
+    /// Machined metallic look via angular gradient.
+    var metallicGradient: AngularGradient {
+        let spectrum = [
+            Color.black.mix(with: .gray, by: 0.2),
+            Color.gray,
+            Color.white.mix(with: .gray, by: 0.2),
+            Color.gray,
+            Color.black.mix(with: .gray, by: 0.2),
+            Color.gray,
+            Color.white.mix(with: .gray, by: 0.2),
+            Color.gray,
+            Color.black.mix(with: .gray, by: 0.2)
+        ]
+        return AngularGradient(
+            gradient: Gradient(colors: spectrum),
+            center: .center,
+            angle: .degrees(45)
+        )
     }
-  }
 
-  private func rotationDragGesture(geometry: GeometryProxy) -> some Gesture {
-    let frame = geometry.frame(in: .local)
-    let center = CGPoint(x: frame.midX, y: frame.midY)
-    return DragGesture()
-      .onChanged { value in
-        if !isDialRotating {
-          isDialRotating = true
-          dialStartAngle = rotationAngle(of: value.startLocation, around: center)
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack {
+                Circle()
+                    .fill(metallicGradient)
+                    .opacity(0.8)
+                    .rotationEffect(.init(degrees: 45), anchor: .center)
+                    .shadow(color: .gray, radius: 4)
+
+                Circle()
+                    .inset(by: thickness)
+                    .fill(metallicGradient)
+                    .opacity(0.3)
+                    .scaleEffect(innerRadius, anchor: .center)
+            }
+            .rotationEffect(.degrees(value))
+            .gesture(rotationDragGesture(geometry: geometry))
         }
+    }
 
-        let dialCurrentAngle = rotationAngle(of: value.location, around: center)
-        let dragAngleDelta = dialCurrentAngle - dialStartAngle
-        let newDialAngle = dialReleaseAngle + dragAngleDelta
-        let dialAngleDelta = newDialAngle - dialAngle
-        let prevDialAngle = dialAngle
+    /// Drag gesture that accumulates angle deltas frame-to-frame,
+    /// normalizing to [-180, 180] to avoid the atan2 wrap-around spike.
+    private func rotationDragGesture(geometry: GeometryProxy) -> some Gesture {
+        let frame = geometry.frame(in: .local)
+        let center = CGPoint(x: frame.midX, y: frame.midY)
+        return DragGesture()
+            .onChanged { dragValue in
+                let currentAngle = angle(of: dragValue.location, around: center)
+                if let prev = previousAngle {
+                    var delta = (currentAngle - prev).degrees
+                    if delta > 180 { delta -= 360 }
+                    if delta < -180 { delta += 360 }
+                    value += delta
+                }
+                previousAngle = currentAngle
+            }
+            .onEnded { _ in
+                previousAngle = nil
+            }
+    }
 
-        // This is the actual angle of the dial that's drawn on the screen.
-        dialAngle += dialAngleDelta
-        // This is the angle that's used to calculate self.value. If the dial
-        // is turned past minValue or maxValue and then back, this angle will
-        // start to diverge from dialAngle. This is so that the dial on the screen
-        // can continue to rotate past minValue or maxValue while dialShadowValue
-        // doesn't change (i.e. remains constant). If dialValue didn't change,
-        // the dial wouldn't be able to rotate freely past minValue or maxValue.
-        dialShadowAngle += dialAngleDelta
-
-        if abs(dialAngle - prevDialAngle) > Angle(degrees: 360) - abs(dragAngleDelta) {
-          let offset = dragAngleDelta.radians <= 0 ? 1 : -1
-          dialRevolutions += offset
-        }
-        let totalDegrees = (Double(dialRevolutions) * 360) + dialShadowAngle.degrees
-        self.value = min(adjustedMaxValue, max(adjustedMinValue, floor(totalDegrees / adjustedDivisor) * adjustedStepping))
-
-        if totalDegrees <= adjustedMinValue {
-          dialRevolutions = Int(adjustedMinValue / 360)
-          dialShadowAngle = .degrees(adjustedMinValue.truncatingRemainder(dividingBy: 360))
-        } else if totalDegrees >= adjustedMaxValue {
-          dialRevolutions = Int(adjustedMaxValue / 360)
-          dialShadowAngle = .degrees(adjustedMaxValue.truncatingRemainder(dividingBy: 360))
-        }
-      }
-      .onEnded { _ in
-        dialReleaseAngle = dialAngle
-        isDialRotating = false
-      }
-  }
-
-  private func abs(_ angle: Angle) -> Angle {
-    .radians(Swift.abs(angle.radians))
-  }
-  
-  /// Elegant rotation angle function of a point arount the center
-  /// - Parameters:
-  ///   - point: CGPoint (e.g. from a touch)
-  ///   - center: CGPoint
-  /// - Returns: Angle
-  private func rotationAngle(of point: CGPoint, around center: CGPoint) -> Angle {
-    let deltaY = point.y - center.y
-    let deltaX = point.x - center.x
-    return Angle(radians: Double(atan2(deltaY, deltaX)))
-  }
+    private func angle(of point: CGPoint, around center: CGPoint) -> Angle {
+        Angle(radians: Double(atan2(point.y - center.y, point.x - center.x)))
+    }
 }
 
-struct Dial_Previews: PreviewProvider {
-  static var previews: some View {
+#Preview {
     Dial(value: .constant(50), innerRadius: 0.97, thickness: 5.0)
-      .frame(width: 350)
-      .padding(.all, 24)
-  }
+        .frame(width: 350)
+        .padding(.all, 24)
 }

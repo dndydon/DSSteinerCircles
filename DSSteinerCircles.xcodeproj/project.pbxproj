@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F802BA2D247DD64E00F28AA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F802BA2C247DD64E00F28AA2 /* AppDelegate.swift */; platformFilters = (macos, ); };
 		F802BA2F247DD64E00F28AA2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F802BA2E247DD64E00F28AA2 /* ContentView.swift */; };
 		F802BA31247DD64F00F28AA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F802BA30247DD64F00F28AA2 /* Assets.xcassets */; };
 		F802BA34247DD64F00F28AA2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F802BA33247DD64F00F28AA2 /* Preview Assets.xcassets */; };
-		F802BA37247DD64F00F28AA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F802BA35247DD64F00F28AA2 /* Main.storyboard */; platformFilters = (macos, ); };
 		F802BA43247DD64F00F28AA2 /* DSSteinerCirclesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F802BA42247DD64F00F28AA2 /* DSSteinerCirclesTests.swift */; };
 		F802BA50247DD71600F28AA2 /* SteinerCircleModel in Frameworks */ = {isa = PBXBuildFile; productRef = F802BA4F247DD71600F28AA2 /* SteinerCircleModel */; };
 		F802BA53247EF78500F28AA2 /* CircleLabeled.swift in Sources */ = {isa = PBXBuildFile; fileRef = F802BA51247EF78500F28AA2 /* CircleLabeled.swift */; };
 		F802BA54247EF78500F28AA2 /* CircleRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F802BA52247EF78500F28AA2 /* CircleRing.swift */; };
+		F83130C92F8D5FEF00EA4B95 /* SteinerRingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83130C82F8D5FEF00EA4B95 /* SteinerRingModel.swift */; };
+		F83130CA2F8D5FEF00EA4B95 /* SteinerRingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83130C82F8D5FEF00EA4B95 /* SteinerRingModel.swift */; };
+		F83130CC2F8D6B7A00EA4B95 /* DSSteinerCirclesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83130CB2F8D6B7A00EA4B95 /* DSSteinerCirclesApp.swift */; };
 		F83B2BDC2A2BBC2200121D6A /* ControlPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B2BDB2A2BBC2200121D6A /* ControlPanel.swift */; };
-		F884792428A052510043C689 /* SequenceBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = F884792328A052510043C689 /* SequenceBuilder */; };
-		F884792628A052510043C689 /* SequenceBuilderExamples in Frameworks */ = {isa = PBXBuildFile; productRef = F884792528A052510043C689 /* SequenceBuilderExamples */; };
 		F887030C2F8CB4AE006B51F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F887030B2F8CB4AE006B51F9 /* Color.swift */; };
+		F896933F2F9016A40067F53E /* PlayPauseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F896933E2F9016A40067F53E /* PlayPauseControl.swift */; };
 		F896E1D72A2AA960008938E5 /* Dial.swift in Sources */ = {isa = PBXBuildFile; fileRef = F896E1D62A2AA960008938E5 /* Dial.swift */; };
 		F8BB5B8F2A685DF800E7FF7F /* LeafModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB5B8E2A685DF800E7FF7F /* LeafModel.swift */; };
 		F8BB5B902A685DF800E7FF7F /* LeafModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB5B8E2A685DF800E7FF7F /* LeafModel.swift */; };
@@ -37,11 +37,9 @@
 
 /* Begin PBXFileReference section */
 		F802BA29247DD64E00F28AA2 /* DSSteinerCircles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DSSteinerCircles.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F802BA2C247DD64E00F28AA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F802BA2E247DD64E00F28AA2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F802BA30247DD64F00F28AA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F802BA33247DD64F00F28AA2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		F802BA36247DD64F00F28AA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F802BA38247DD64F00F28AA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F802BA39247DD64F00F28AA2 /* DSSteinerCircles.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DSSteinerCircles.entitlements; sourceTree = "<group>"; };
 		F802BA3E247DD64F00F28AA2 /* DSSteinerCirclesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DSSteinerCirclesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,8 +48,11 @@
 		F802BA4D247DD6C200F28AA2 /* SteinerCircleModel */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SteinerCircleModel; sourceTree = "<group>"; };
 		F802BA51247EF78500F28AA2 /* CircleLabeled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleLabeled.swift; sourceTree = "<group>"; };
 		F802BA52247EF78500F28AA2 /* CircleRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleRing.swift; sourceTree = "<group>"; };
+		F83130C82F8D5FEF00EA4B95 /* SteinerRingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteinerRingModel.swift; sourceTree = "<group>"; };
+		F83130CB2F8D6B7A00EA4B95 /* DSSteinerCirclesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSSteinerCirclesApp.swift; sourceTree = "<group>"; };
 		F83B2BDB2A2BBC2200121D6A /* ControlPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPanel.swift; sourceTree = "<group>"; };
 		F887030B2F8CB4AE006B51F9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		F896933E2F9016A40067F53E /* PlayPauseControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayPauseControl.swift; sourceTree = "<group>"; };
 		F896E1D62A2AA960008938E5 /* Dial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dial.swift; sourceTree = "<group>"; };
 		F8BB5B8E2A685DF800E7FF7F /* LeafModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeafModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,9 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F884792628A052510043C689 /* SequenceBuilderExamples in Frameworks */,
 				F802BA50247DD71600F28AA2 /* SteinerCircleModel in Frameworks */,
-				F884792428A052510043C689 /* SequenceBuilder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,19 +99,19 @@
 		F802BA2B247DD64E00F28AA2 /* DSSteinerCircles */ = {
 			isa = PBXGroup;
 			children = (
-				F802BA2C247DD64E00F28AA2 /* AppDelegate.swift */,
 				F8BB5B8D2A685DD300E7FF7F /* Models */,
 				F802BA2E247DD64E00F28AA2 /* ContentView.swift */,
 				F83B2BDB2A2BBC2200121D6A /* ControlPanel.swift */,
+				F896933E2F9016A40067F53E /* PlayPauseControl.swift */,
 				F802BA52247EF78500F28AA2 /* CircleRing.swift */,
 				F896E1D62A2AA960008938E5 /* Dial.swift */,
 				F802BA51247EF78500F28AA2 /* CircleLabeled.swift */,
 				F887030B2F8CB4AE006B51F9 /* Color.swift */,
 				F802BA30247DD64F00F28AA2 /* Assets.xcassets */,
-				F802BA35247DD64F00F28AA2 /* Main.storyboard */,
 				F802BA38247DD64F00F28AA2 /* Info.plist */,
 				F802BA39247DD64F00F28AA2 /* DSSteinerCircles.entitlements */,
 				F802BA32247DD64F00F28AA2 /* Preview Content */,
+				F83130CB2F8D6B7A00EA4B95 /* DSSteinerCirclesApp.swift */,
 			);
 			path = DSSteinerCircles;
 			sourceTree = "<group>";
@@ -145,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				F8BB5B8E2A685DF800E7FF7F /* LeafModel.swift */,
+				F83130C82F8D5FEF00EA4B95 /* SteinerRingModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -167,8 +167,6 @@
 			name = DSSteinerCircles;
 			packageProductDependencies = (
 				F802BA4F247DD71600F28AA2 /* SteinerCircleModel */,
-				F884792328A052510043C689 /* SequenceBuilder */,
-				F884792528A052510043C689 /* SequenceBuilderExamples */,
 			);
 			productName = DSSteinerCircles;
 			productReference = F802BA29247DD64E00F28AA2 /* DSSteinerCircles.app */;
@@ -222,7 +220,6 @@
 			);
 			mainGroup = F802BA20247DD64E00F28AA2;
 			packageReferences = (
-				F884792228A052510043C689 /* XCRemoteSwiftPackageReference "SequenceBuilder" */,
 			);
 			productRefGroup = F802BA2A247DD64E00F28AA2 /* Products */;
 			projectDirPath = "";
@@ -239,7 +236,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F802BA37247DD64F00F28AA2 /* Main.storyboard in Resources */,
 				F802BA34247DD64F00F28AA2 /* Preview Assets.xcassets in Resources */,
 				F802BA31247DD64F00F28AA2 /* Assets.xcassets in Resources */,
 			);
@@ -261,12 +257,14 @@
 			files = (
 				F83B2BDC2A2BBC2200121D6A /* ControlPanel.swift in Sources */,
 				F802BA2F247DD64E00F28AA2 /* ContentView.swift in Sources */,
+				F896933F2F9016A40067F53E /* PlayPauseControl.swift in Sources */,
 				F8BB5B8F2A685DF800E7FF7F /* LeafModel.swift in Sources */,
+				F83130CA2F8D5FEF00EA4B95 /* SteinerRingModel.swift in Sources */,
 				F802BA54247EF78500F28AA2 /* CircleRing.swift in Sources */,
+				F83130CC2F8D6B7A00EA4B95 /* DSSteinerCirclesApp.swift in Sources */,
 				F896E1D72A2AA960008938E5 /* Dial.swift in Sources */,
 				F887030C2F8CB4AE006B51F9 /* Color.swift in Sources */,
 				F802BA53247EF78500F28AA2 /* CircleLabeled.swift in Sources */,
-				F802BA2D247DD64E00F28AA2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F83130C92F8D5FEF00EA4B95 /* SteinerRingModel.swift in Sources */,
 				F802BA43247DD64F00F28AA2 /* DSSteinerCirclesTests.swift in Sources */,
 				F8BB5B902A685DF800E7FF7F /* LeafModel.swift in Sources */,
 			);
@@ -288,17 +287,6 @@
 			targetProxy = F802BA3F247DD64F00F28AA2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		F802BA35247DD64F00F28AA2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F802BA36247DD64F00F28AA2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F802BA45247DD64F00F28AA2 /* Debug */ = {
@@ -434,6 +422,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"DSSteinerCircles/Preview Content\"";
+				DEVELOPMENT_TEAM = 96J2PPD4HG;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DSSteinerCircles/Info.plist;
@@ -441,7 +430,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stonecanyon.DSSteinerCircles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = macosx;
@@ -461,6 +450,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"DSSteinerCircles/Preview Content\"";
+				DEVELOPMENT_TEAM = 96J2PPD4HG;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DSSteinerCircles/Info.plist;
@@ -468,7 +458,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stonecanyon.DSSteinerCircles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = macosx;
@@ -552,31 +542,10 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		F884792228A052510043C689 /* XCRemoteSwiftPackageReference "SequenceBuilder" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/andtie/SequenceBuilder";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.7;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
 		F802BA4F247DD71600F28AA2 /* SteinerCircleModel */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SteinerCircleModel;
-		};
-		F884792328A052510043C689 /* SequenceBuilder */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F884792228A052510043C689 /* XCRemoteSwiftPackageReference "SequenceBuilder" */;
-			productName = SequenceBuilder;
-		};
-		F884792528A052510043C689 /* SequenceBuilderExamples */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F884792228A052510043C689 /* XCRemoteSwiftPackageReference "SequenceBuilder" */;
-			productName = SequenceBuilderExamples;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

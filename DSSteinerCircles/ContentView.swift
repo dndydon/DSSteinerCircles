@@ -6,38 +6,39 @@
 //  Copyright © 2020 Don Sleeter. All rights reserved.
 //
 
+/// Root view. Owns the `SteinerRingModel` and composes the
+/// circle ring, transport controls, and configuration sliders.
+
 import SwiftUI
 import SteinerCircleModel
 
 struct ContentView: View {
 
-  @State private var isPrime: Bool = false
-  @State private var count: Double = 5  // why Double?  Because Slider needs it?
-  @State private var gap: Double = 0.0
-  @State private var thickness: CGFloat = 4.0
-  @State private var mainColor: Color = .secondary
+    @State private var ring = SteinerRingModel()
 
-  var body: some View {
-    VStack {
-      CircleRing(count: Int(count), thickness: thickness, gap: gap)
-        .foregroundColor(mainColor)
-        .scaleEffect(0.90)
-        .aspectRatio(1.0, contentMode: .fit)
+    var body: some View {
+        VStack {
+            CircleRing(ring: ring)
+                .scaleEffect(0.90)
+                .aspectRatio(1.0, contentMode: .fit)
 
-      GroupBox(label: Text("Configuration:")) {
-        ControlPanel(count: self.$count,
-                     gap: self.$gap,
-                     thickness: self.$thickness)
-      }
-      .padding([.horizontal, .bottom])
+            PlayPauseControl(
+                onFastBackward: { ring.playBackward(fast: true) },
+                onPlayBackward:  { ring.playBackward() },
+                onStop:          { ring.stopPlayback() },
+                onPlay:          { ring.playForward() },
+                onFastForward:   { ring.playForward(fast: true) }
+            )
+
+            GroupBox(label: Text("Configuration:")) {
+                ControlPanel(ring: ring)
+            }
+            .padding([.horizontal, .bottom])
+        }
     }
-  }
 }
 
-
-struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
+#Preview {
     ContentView()
-      .frame(width: 450, height: 600)
-  }
+        .frame(width: 450, height: 600)
 }

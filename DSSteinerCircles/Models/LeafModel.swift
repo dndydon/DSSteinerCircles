@@ -6,49 +6,34 @@
 //  Copyright © 2023 Don Sleeter. All rights reserved.
 //
 
+/// @Observable model for a single leaf circle in a Steiner ring.
+/// Each leaf has a global index (for labeling and coloring),
+/// a fill color derived from its position, and selection state.
+
 import SwiftUI
-import Observation
-
-// For example:
-// Voice, Section(s), Chorus
-// Instrument, Section(s), Orchestra
-//
-// Leaf, Branch(es), Tree
-
-// I want to create, view, list, select, edit, delete, and save trees with these things
 
 @Observable
-class LeafModel {
-  var shape: any Shape
-  var label: String
-  var selected: Bool
-  var fillColor: Color
-  var selectedColor: Color
+class LeafModel: Identifiable {
+    let id = UUID()
+    var index: Int
+    var label: String
+    var selected: Bool
+    var fillColor: Color
+    var selectedColor: Color
 
-  init(shape: any Shape = Circle(), 
-       label: String = "12",
-       selected: Bool = false,
-       fillColor: Color = .secondary,
-       selectedColor: Color = .accentColor) {
-    self.shape = shape
-    self.label = label
-    self.selected = selected
-    self.fillColor = fillColor
-    self.selectedColor = selectedColor
-  }
+    init(index: Int,
+         label: String = "",
+         selected: Bool = false,
+         fillColor: Color = .secondary,
+         selectedColor: Color = .accentColor) {
+        self.index = index
+        self.label = label.isEmpty ? "\(index)" : label
+        self.selected = selected
+        self.fillColor = fillColor
+        self.selectedColor = selectedColor
+    }
 
-  static var example: LeafModel {
-    return LeafModel()
-  }
-
-}
-
-@Observable
-class BranchModel {
-  var leaves: [LeafModel] = [LeafModel.example]
-}
-
-@Observable
-class TreeModel {
-  var branches: [BranchModel] = []
+    func toggleSelection() {
+        selected.toggle()
+    }
 }

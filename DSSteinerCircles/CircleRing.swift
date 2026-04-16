@@ -1,112 +1,119 @@
-  //
-  //  Gauge.swift
-  //  DSGaugeView
-  //
-  //  Created by Don Sleeter on 3/8/20.
-  //  Copyright © 2020 Don Sleeter. All rights reserved.
-  //
+//
+//  CircleRing.swift
+//  DSSteinerCircles
+//
+//  Created by Don Sleeter on 3/8/20.
+//  Copyright © 2020 Don Sleeter. All rights reserved.
+//
+
+/// Recursive view that renders a Steiner circle ring.
+///
+/// At `depth == 0` (root), it shows the toggle, dial, and outer border.
+/// When the ring is hierarchical, it recurses into child `CircleRing`s;
+/// otherwise it renders `CircleLabeled` leaves.
+///
+/// `parentRotation` accumulates rotation from all ancestor rings so that
+/// leaf labels can counter-rotate to stay upright.
 
 import SwiftUI
 import SteinerCircleModel
 
 struct CircleRing: View {
 
-  @State private var rotationAngle = 0.0
-  @State private var showPrimes: Bool = false
+    var ring: SteinerRingModel
+    var depth: Int = 0
+    var parentRotation: Double = 0.0
 
-  var count: Int
-  var thickness: CGFloat
-  var gap: CGFloat
-  var steinerCircle: SteinerCircle
-  let factors: [Int]  // need a type for this to be safe:
-                      // no more than 32 elements -> 4.294967296G maximum
-                      // uses SIMD or Accelerate Framework for Primes and factorization
-                      //@State private var tree: [LeafModel]
-
-  internal init(count: Int = 6,
-                thickness: CGFloat = 6.5,
-                gap: CGFloat = 0.00,
-                showPrimes: Bool = false) {
-    self.count = count
-    self.thickness = thickness
-    self.gap = gap
-    self.steinerCircle = SteinerCircle(outerRadius: 1, circleCount: count, gap: gap)
-    self.factors = count.primeFactors.reversed().map { $0 }
-    self.showPrimes = showPrimes
-      //self.tree = [LeafModel]()
-
-  }
-
-  public func rho() -> CGFloat {
-    let gapEffectedRho = (1 - gap) * steinerCircle.rho()
-      //print("gapEffected vs. regular Rho: ", gapEffectedRho, steinerCircle.rho())
-    return gapEffectedRho
-  }
-
-  private func resetSelectionAndRotation() {
-    withAnimation(.spring) {
-        // figure out resetting selection here
-      print("rotationAngle:", rotationAngle)
-      rotationAngle = 0.0
+    /// Scale factor for leaves/children relative to this ring's size.
+    private var normalizedRho: CGFloat {
+        guard ring.outerRadius > 0 else { return 0 }
+        return ring.rho / ring.outerRadius
     }
-//    for radians in stride(from: 0.0, to: .pi * 2, by: .pi / 2) {
-//      let degrees = Int(radians * 180 / .pi)
-//      print("Degrees: \(degrees), radians: \(radians)")
-//    }
-//      // Degrees: 0, radians: 0.0
-//      // Degrees: 90, radians: 1.5707963267949
-//      // Degrees: 180, radians: 3.14159265358979
-//      // Degrees: 270, radians: 4.71238898038469
 
-  }
+    /// Inner circle radius as a fraction of this ring's size.
+    private var normalizedInnerRadius: CGFloat {
+        guard ring.outerRadius > 0 else { return 0 }
+        return ring.innerRadius / ring.outerRadius
+    }
 
-  var body: some View {
-    ZStack(alignment: .topLeading) {
-      Toggle(isOn: $showPrimes) {
-        let biggest = Int(factors.first!)
-        let remainder = count/biggest
-        Text("Show: \(biggest) x \(remainder)")
-          .font(.headline)
-      }
+    var body: some View {
+        ZStack(alignment: .topLeading) {
+            // Show the factors toggle only at the root level
+            if depth == 0 {
+                Toggle(isOn: Bindable(ring).showPrimes) {
+                    let factors = String(describing: ring.factors)
+                    let biggest = ring.collapsedFactors.first ?? ring.count
+                    let remainder = ring.count / biggest
+                    VStack(alignment: .leading) {
+                        Text("Show factors:")
+                        Text("\(factors)")
+                        Text("\(ring.count) = \(biggest) x \(remainder)")
+                            .font(.headline)
+                    }
+                }
+            }
 
-      ZStack(alignment: .center) {
+            ZStack(alignment: .center) {
 
-        Circle() // innerCircle
-          .inset(by: thickness/2)
-          .stroke(style: StrokeStyle(lineWidth: thickness))
-          .scaleEffect(steinerCircle.innerRadius(), anchor: UnitPoint(x: 0.50, y: 0.50))
-          .foregroundColor(Color(.yellow).opacity(0.75))
+                // Inner circle stroke
+                Circle()
+                    .inset(by: ring.thickness / 2)
+                    .stroke(style: StrokeStyle(lineWidth: ring.thickness))
+                    .scaleEffect(normalizedInnerRadius, anchor: UnitPoint(x: 0.50, y: 0.50))
+                    .foregroundColor(Color(.yellow).opacity(0.75))
 
-          // Dial circular rotation algorithm -- one finger or cursor rotates it
-          // make this a protocol?
-        Dial(value: $rotationAngle, innerRadius: steinerCircle.innerRadius(), thickness: thickness)
-          .opacity(0.5)
-          .aspectRatio(1.0, contentMode: .fit)
-          .onTapGesture(count: 2) {
-            resetSelectionAndRotation()
-          }
+                // Rotatable dial (root only)
+                if depth == 0 {
+                    Dial(value: Bindable(ring).rotationAngle,
+                         innerRadius: normalizedInnerRadius,
+                         thickness: ring.thickness)
+                        .opacity(0.65)
+                        .aspectRatio(1.0, contentMode: .fit)
+                        .onTapGesture(count: 2) {
+                            ring.resetRotation()
+                        }
+                        .onTapGesture(count: 1) {
+                            ring.stopPlayback()
+                        }
+                }
 
-        ForEach(1...count, id: \.self) { idx in
-          let label = String(idx)
-          CircleLabeled(label: label, color: colorForValue(idx, of: count))
-            .scaleEffect(self.rho(), anchor: UnitPoint(x: 0.50, y: self.count == 1 ? 0.5 : 0.0 ))
-            .rotationEffect(.degrees(self.rotationAngle + 360/Double(self.count) * Double(idx)))
+                if ring.isHierarchical {
+                    // Hierarchical: place child rings around this ring
+                    ForEach(Array(ring.children.enumerated()), id: \.element.id) { idx, child in
+                        let direction = ring.rotationAngle + 360 / Double(ring.displayCount) * Double(idx)
+                        CircleRing(ring: child, depth: depth + 1, parentRotation: parentRotation + direction)
+                            .scaleEffect(normalizedRho,
+                                         anchor: UnitPoint(x: 0.50, y: ring.displayCount == 1 ? 0.5 : 0.0))
+                            .rotationEffect(.degrees(direction))
+                    }
+                } else {
+                    // Flat: place leaf circles around this ring
+                    ForEach(ring.leaves) { leaf in
+                        let direction = ring.rotationAngle + 360 / Double(ring.displayCount) * Double(leaf.index - ring.startIndex)
+                        let totalRotation = parentRotation + direction
+                        CircleLabeled(leaf: leaf, rotation: -totalRotation)
+                            .scaleEffect(normalizedRho,
+                                         anchor: UnitPoint(x: 0.50, y: ring.displayCount == 1 ? 0.5 : 0.0))
+                            .rotationEffect(.degrees(direction))
+                    }
+                }
+
+                // Outer border stroke
+                Circle()
+                    .stroke(style: StrokeStyle(lineWidth: ring.thickness))
+            }
         }
-
-        Circle() // outer border
-          .inset(by: -thickness/2)
-          .stroke(style: StrokeStyle(lineWidth: thickness))
-
-      }
     }
-  }
 }
 
-
-struct CircleRing_Previews: PreviewProvider {
-  static var previews: some View {
-    CircleRing(count: 12, thickness: 1, gap: 0.20)
-      .scaleEffect(0.96)
-      .frame(width: 400)
-  }
+#Preview {
+    CircleRing(ring: {
+        let model = SteinerRingModel()
+        model.count = 12
+        model.thickness = 1
+        model.gap = 0.20
+        return model
+    }())
+    .scaleEffect(0.96)
+    .frame(width: 400)
 }

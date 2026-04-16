@@ -1,55 +1,48 @@
 //
 //  CircleLabeled.swift
-//  DSGaugeView
+//  DSSteinerCircles
 //
 //  Created by Don Sleeter on 3/10/20.
 //  Copyright © 2020 Don Sleeter. All rights reserved.
 //
 
+/// A single leaf circle that shows its index label when selected.
+/// The `rotation` parameter counter-rotates the label so it stays
+/// upright regardless of how deeply nested this leaf is.
+
 import SwiftUI
-import SteinerCircleModel
 
-
-/// Stateful Leaf Node that needs to be given
-/// label and selection 
 struct CircleLabeled: View {
 
-  // refactor to use this model with Observation
-  // var model = LeafModel.self
+    var leaf: LeafModel
+    var rotation: Double = 0.0
+    let lineWidth: CGFloat = 8
 
-  // old state variables:
-  @State private var selected: Bool = false
-  var label: String = "0"
-  var color: Color = .gray.opacity(0.5)
-
-  var body: some View {
-    ZStack {
-      Circle()
-        .foregroundColor(selected ? Color.accentColor : color)
-        .shadow(radius: selected ? 30 : 0)
-        .overlay(selected ? Color.yellow : Color.clear,
-                 in: Circle().stroke(style: StrokeStyle(lineWidth: 8)))
-      Text("\(label)")
-        .font(.largeTitle)
-        .scaleEffect(5)
-        .foregroundColor(.primary)
+    var body: some View {
+        ZStack {
+            Circle()
+                .foregroundColor(leaf.selected ? leaf.selectedColor : leaf.fillColor)
+                .shadow(radius: leaf.selected ? 30 : 0)
+                .overlay(leaf.selected ? Color.yellow : Color.clear,
+                         in: Circle().inset(by: lineWidth / 2).stroke(style: StrokeStyle(lineWidth: 8)))
+            // Always present in layout to prevent size jumps on selection
+            Text(leaf.label)
+                .font(.largeTitle)
+                .scaleEffect(10)
+                .foregroundColor(.primary)
+                .rotationEffect(Angle(degrees: rotation))
+                .opacity(leaf.selected ? 1 : 0)
+        }
+        .gesture(TapGesture()
+            .onEnded { _ in
+                leaf.toggleSelection()
+            }
+        )
     }
-    .gesture(TapGesture()
-      .onEnded { _ in
-        selected.toggle()
-      }
-    )
-  }
 }
 
-struct CircleLabeled_Previews: PreviewProvider {
-  static var previews: some View {
-    CircleLabeled()
-      .frame(width: 275)
-      .padding()
-//    let model = LeafModel()
-//    CircleLabeled(model: model)
-//      .frame(width: 250)
-//      .padding()
-  }
+#Preview {
+    CircleLabeled(leaf: LeafModel(index: 10, selected: true, fillColor: .gray))
+        .frame(width: 375)
+        .padding()
 }

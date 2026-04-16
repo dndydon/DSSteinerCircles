@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>26</string>
+					<string>17</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>25</string>
+					<string>16</string>
 					<key>Timestamp</key>
-					<string>737706995.949681</string>
+					<string>797816190.5809</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -34,67 +34,20 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>    self.gap = gap &gt; 0.001 ? gap : 0.001  // range 0 to 1
+				<string>  public init(outerRadius: CGFloat, circleCount: Int, gap: CGFloat = 0.001) {
 </string>
 				<key>leading</key>
-				<string>    self.theta = Double(180.0 / Double(circleCount)).asRadians
-    self.sineTheta = sin(theta) //CGFloat(sin(theta))
+				<string>  private var sineTheta: CGFloat
+
 </string>
 				<key>trailing</key>
-				<string>    //self.innerRadius = outerRadius - 2 * rho()
-    //print(description)
-  }
+				<string>    self.outerRadius = outerRadius
+    self.circleCount = circleCount
+    self.direction = -90
 </string>
 			</dict>
 			<key>title</key>
 			<string>0.001 is better than .leastNonzeroMagnitude because it fixes the bug:  "ignoring singular matrix: ProjectionTransform(m11: 5e-324, m12: 0.0, ..."</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>49</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>48</string>
-					<key>Timestamp</key>
-					<string>737777614.46516</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>DSSteinerCircles/CircleRing.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>      print("rotationAngle:", rotationAngle)
-</string>
-				<key>leading</key>
-				<string>    withAnimation(.spring) {
-        // figure out resetting selection here
-</string>
-				<key>trailing</key>
-				<string>      rotationAngle = 0.0
-    }
-//    for radians in stride(from: 0.0, to: .pi * 2, by: .pi / 2) {
-</string>
-			</dict>
-			<key>title</key>
-			<string>something's wrong with rotationAngle</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>
