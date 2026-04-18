@@ -66,7 +66,7 @@ struct CircleRing: View {
 
                 // Rotatable dial (root only)
                 if depth == 0 {
-                    Dial(value: Bindable(ring).rotationAngle,
+                    Dial(rotation: Bindable(ring).rotationAngle,
                          innerRadius: normalizedInnerRadius,
                          thickness: ring.thickness)
                         .opacity(0.65)
@@ -115,7 +115,7 @@ struct CircleRing: View {
         let model = SteinerRingModel()
         model.count = 12
         model.thickness = 1
-        model.gap = 0.20
+        model.gap = 0.050
         return model
     }())
     .scaleEffect(0.96)

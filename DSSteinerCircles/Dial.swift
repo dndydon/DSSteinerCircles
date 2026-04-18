@@ -13,65 +13,58 @@ import SwiftUI
 
 struct Dial: View {
 
-  @Binding public var value: Double
-  public var innerRadius: Double
-  public var thickness: CGFloat
+  @Binding var rotation: Double
+  var innerRadius: Double
+  var thickness: CGFloat
 
-  /// Previous frame's angle during a rotation drag.
   @State private var previousAngle: Angle?
 
-  /// Machined metallic look via angular gradient.
-  var metallicGradient: AngularGradient {
+  private static let gradient: AngularGradient = {
     let spectrum = [
-      Color.black.mix(with: .gray, by: 0.2),
+      Color.black.mix(with: .gray, by: 0.42),
       Color.gray,
-      Color.white.mix(with: .gray, by: 0.2),
+      Color.white.mix(with: .gray, by: 0.42),
       Color.gray,
-      Color.black.mix(with: .gray, by: 0.2),
+      Color.black.mix(with: .gray, by: 0.42),
       Color.gray,
-      Color.white.mix(with: .gray, by: 0.2),
+      Color.white.mix(with: .gray, by: 0.42),
       Color.gray,
-      Color.black.mix(with: .gray, by: 0.2)
+      Color.black.mix(with: .gray, by: 0.42),
     ]
     return AngularGradient(
       gradient: Gradient(colors: spectrum),
       center: .center,
-      angle: .degrees(45)
+      angle: .degrees(90)
     )
-  }
+  }()
 
   var body: some View {
     GeometryReader { geometry in
-      let frame = geometry.frame(in: .local)
-      let center = CGPoint(x: frame.midX, y: frame.midY)
+      let center = CGPoint(x: geometry.size.width / 2,
+                           y: geometry.size.height / 2)
 
       ZStack {
-        // Outer ring
         Circle()
-          .fill(metallicGradient)
-          .opacity(0.8)
-          .rotationEffect(.init(degrees: 45), anchor: .center)
+          .fill(Self.gradient)
           .shadow(color: .gray, radius: 4)
 
-        // Inner disc
         Circle()
-          .inset(by: thickness)
-          .fill(metallicGradient)
-          .opacity(0.3)
-          .scaleEffect(innerRadius, anchor: .center)
+          .fill(Self.gradient)
+          .scaleEffect(innerRadius)
+          .opacity(0.4)
       }
-      .rotationEffect(.degrees(value))
+      .rotationEffect(.degrees(rotation))
       .gesture(
         DragGesture()
-          .onChanged { dragValue in
-            let currentAngle = angle(of: dragValue.location, around: center)
+          .onChanged { drag in
+            let current = angle(of: drag.location, around: center)
             if let prev = previousAngle {
-              var delta = (currentAngle - prev).degrees
+              var delta = (current - prev).degrees
               if delta > 180 { delta -= 360 }
               if delta < -180 { delta += 360 }
-              value += delta
+              rotation += delta
             }
-            previousAngle = currentAngle
+            previousAngle = current
           }
           .onEnded { _ in
             previousAngle = nil
@@ -81,13 +74,13 @@ struct Dial: View {
   }
 
   private func angle(of point: CGPoint, around center: CGPoint) -> Angle {
-    Angle(radians: Double(atan2(point.y - center.y, point.x - center.x)))
+    Angle(radians: atan2(point.y - center.y, point.x - center.x))
   }
 }
 
 #Preview {
   Dial(
-    value: .constant(50),
+    rotation: .constant(45),
     innerRadius: 0.97,
     thickness: 5.0
   )

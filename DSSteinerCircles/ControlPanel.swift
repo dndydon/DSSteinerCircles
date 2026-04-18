@@ -38,7 +38,7 @@ struct ControlPanel: View {
                                     isEditingCount = true
                                 }
                         }
-                    }.frame(width: 110, height: 30, alignment: .leading)
+                    }.frame(width: 117, height: 30, alignment: .leading)
                 }
                 .padding(.horizontal)
 

@@ -94,7 +94,7 @@ class SteinerRingModel: Identifiable {
 
     // MARK: - Init
 
-    init(count: Int = 6, outerRadius: CGFloat = 1.0, gap: Double = 0.149, thickness: CGFloat = 0.0,
+    init(count: Int = 6, outerRadius: CGFloat = 1.0, gap: Double = 0.050, thickness: CGFloat = 0.0,
          totalCount: Int? = nil, startIndex: Int = 1) {
         self.count = count
         self.totalCount = totalCount ?? count
