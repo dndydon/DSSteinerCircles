@@ -15,7 +15,7 @@ import SwiftUI
 @Observable
 class LeafModel: Identifiable {
     let id = UUID()
-    var index: Int
+    var index: Int { didSet { label = "\(index)" } }
     var label: String
     var selected: Bool
     var fillColor: Color

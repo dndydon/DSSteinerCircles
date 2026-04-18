@@ -22,7 +22,7 @@ struct ContentView: View {
                 .aspectRatio(1.0, contentMode: .fit)
 
             PlayPauseControl(
-                onFastBackward: { ring.playBackward(fast: true) },
+                onFastBackward:  { ring.playBackward(fast: true) },
                 onPlayBackward:  { ring.playBackward() },
                 onStop:          { ring.stopPlayback() },
                 onPlay:          { ring.playForward() },
@@ -33,6 +33,22 @@ struct ContentView: View {
                 ControlPanel(ring: ring)
             }
             .padding([.horizontal, .bottom])
+        }
+        .background {
+            // Hidden buttons for arrow key shortcuts (no modifier keys)
+            Button("") {
+                ring.stopPlayback()
+                if ring.count > 1 { ring.count -= 1 }
+            }
+            .keyboardShortcut(.leftArrow, modifiers: [])
+            .hidden()
+
+            Button("") {
+                ring.stopPlayback()
+                if ring.count < 500 { ring.count += 1 }
+            }
+            .keyboardShortcut(.rightArrow, modifiers: [])
+            .hidden()
         }
     }
 }

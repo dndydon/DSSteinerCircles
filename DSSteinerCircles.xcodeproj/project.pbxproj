@@ -11,7 +11,6 @@
 		F802BA31247DD64F00F28AA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F802BA30247DD64F00F28AA2 /* Assets.xcassets */; };
 		F802BA34247DD64F00F28AA2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F802BA33247DD64F00F28AA2 /* Preview Assets.xcassets */; };
 		F802BA43247DD64F00F28AA2 /* DSSteinerCirclesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F802BA42247DD64F00F28AA2 /* DSSteinerCirclesTests.swift */; };
-		F802BA50247DD71600F28AA2 /* SteinerCircleModel in Frameworks */ = {isa = PBXBuildFile; productRef = F802BA4F247DD71600F28AA2 /* SteinerCircleModel */; };
 		F802BA53247EF78500F28AA2 /* CircleLabeled.swift in Sources */ = {isa = PBXBuildFile; fileRef = F802BA51247EF78500F28AA2 /* CircleLabeled.swift */; };
 		F802BA54247EF78500F28AA2 /* CircleRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F802BA52247EF78500F28AA2 /* CircleRing.swift */; };
 		F83130C92F8D5FEF00EA4B95 /* SteinerRingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83130C82F8D5FEF00EA4B95 /* SteinerRingModel.swift */; };
@@ -19,9 +18,12 @@
 		F83130CC2F8D6B7A00EA4B95 /* DSSteinerCirclesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83130CB2F8D6B7A00EA4B95 /* DSSteinerCirclesApp.swift */; };
 		F83257CB2F90B57E00D86DF2 /* PrimeFactorization in Frameworks */ = {isa = PBXBuildFile; productRef = F83257CA2F90B57E00D86DF2 /* PrimeFactorization */; };
 		F83B2BDC2A2BBC2200121D6A /* ControlPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B2BDB2A2BBC2200121D6A /* ControlPanel.swift */; };
+		F87DEAFD2F93550600079E8D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F887030B2F8CB4AE006B51F9 /* Color.swift */; };
 		F887030C2F8CB4AE006B51F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F887030B2F8CB4AE006B51F9 /* Color.swift */; };
 		F896933F2F9016A40067F53E /* PlayPauseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F896933E2F9016A40067F53E /* PlayPauseControl.swift */; };
 		F896E1D72A2AA960008938E5 /* Dial.swift in Sources */ = {isa = PBXBuildFile; fileRef = F896E1D62A2AA960008938E5 /* Dial.swift */; };
+		F8B95AD52F92044200AA95F7 /* SteinerChainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B95AD42F92044200AA95F7 /* SteinerChainView.swift */; };
+		F8B95AD72F92167500AA95F7 /* SteinerCircleModel in Frameworks */ = {isa = PBXBuildFile; productRef = F8B95AD62F92167500AA95F7 /* SteinerCircleModel */; };
 		F8BB5B8F2A685DF800E7FF7F /* LeafModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB5B8E2A685DF800E7FF7F /* LeafModel.swift */; };
 		F8BB5B902A685DF800E7FF7F /* LeafModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB5B8E2A685DF800E7FF7F /* LeafModel.swift */; };
 /* End PBXBuildFile section */
@@ -46,7 +48,6 @@
 		F802BA3E247DD64F00F28AA2 /* DSSteinerCirclesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DSSteinerCirclesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F802BA42247DD64F00F28AA2 /* DSSteinerCirclesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSSteinerCirclesTests.swift; sourceTree = "<group>"; };
 		F802BA44247DD64F00F28AA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F802BA4D247DD6C200F28AA2 /* SteinerCircleModel */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SteinerCircleModel; sourceTree = "<group>"; };
 		F802BA51247EF78500F28AA2 /* CircleLabeled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleLabeled.swift; sourceTree = "<group>"; };
 		F802BA52247EF78500F28AA2 /* CircleRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleRing.swift; sourceTree = "<group>"; };
 		F83130C82F8D5FEF00EA4B95 /* SteinerRingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteinerRingModel.swift; sourceTree = "<group>"; };
@@ -55,6 +56,7 @@
 		F887030B2F8CB4AE006B51F9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		F896933E2F9016A40067F53E /* PlayPauseControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayPauseControl.swift; sourceTree = "<group>"; };
 		F896E1D62A2AA960008938E5 /* Dial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dial.swift; sourceTree = "<group>"; };
+		F8B95AD42F92044200AA95F7 /* SteinerChainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteinerChainView.swift; sourceTree = "<group>"; };
 		F8BB5B8E2A685DF800E7FF7F /* LeafModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeafModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,7 +66,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F83257CB2F90B57E00D86DF2 /* PrimeFactorization in Frameworks */,
-				F802BA50247DD71600F28AA2 /* SteinerCircleModel in Frameworks */,
+				F8B95AD72F92167500AA95F7 /* SteinerCircleModel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,7 +83,6 @@
 		F802BA20247DD64E00F28AA2 = {
 			isa = PBXGroup;
 			children = (
-				F802BA4D247DD6C200F28AA2 /* SteinerCircleModel */,
 				F802BA2B247DD64E00F28AA2 /* DSSteinerCircles */,
 				F802BA41247DD64F00F28AA2 /* DSSteinerCirclesTests */,
 				F802BA2A247DD64E00F28AA2 /* Products */,
@@ -104,6 +105,7 @@
 				F8BB5B8D2A685DD300E7FF7F /* Models */,
 				F802BA2E247DD64E00F28AA2 /* ContentView.swift */,
 				F83B2BDB2A2BBC2200121D6A /* ControlPanel.swift */,
+				F8B95AD42F92044200AA95F7 /* SteinerChainView.swift */,
 				F896933E2F9016A40067F53E /* PlayPauseControl.swift */,
 				F802BA52247EF78500F28AA2 /* CircleRing.swift */,
 				F896E1D62A2AA960008938E5 /* Dial.swift */,
@@ -168,8 +170,8 @@
 			);
 			name = DSSteinerCircles;
 			packageProductDependencies = (
-				F802BA4F247DD71600F28AA2 /* SteinerCircleModel */,
 				F83257CA2F90B57E00D86DF2 /* PrimeFactorization */,
+				F8B95AD62F92167500AA95F7 /* SteinerCircleModel */,
 			);
 			productName = DSSteinerCircles;
 			productReference = F802BA29247DD64E00F28AA2 /* DSSteinerCircles.app */;
@@ -224,6 +226,7 @@
 			mainGroup = F802BA20247DD64E00F28AA2;
 			packageReferences = (
 				F83257C92F90B56400D86DF2 /* XCRemoteSwiftPackageReference "PrimeFactorization" */,
+				F8D54C9E2F90CDC70024BE0E /* XCRemoteSwiftPackageReference "SteinerCircleModel" */,
 			);
 			productRefGroup = F802BA2A247DD64E00F28AA2 /* Products */;
 			projectDirPath = "";
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F83B2BDC2A2BBC2200121D6A /* ControlPanel.swift in Sources */,
+				F8B95AD52F92044200AA95F7 /* SteinerChainView.swift in Sources */,
 				F802BA2F247DD64E00F28AA2 /* ContentView.swift in Sources */,
 				F896933F2F9016A40067F53E /* PlayPauseControl.swift in Sources */,
 				F8BB5B8F2A685DF800E7FF7F /* LeafModel.swift in Sources */,
@@ -277,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F83130C92F8D5FEF00EA4B95 /* SteinerRingModel.swift in Sources */,
+				F87DEAFD2F93550600079E8D /* Color.swift in Sources */,
 				F802BA43247DD64F00F28AA2 /* DSSteinerCirclesTests.swift in Sources */,
 				F8BB5B902A685DF800E7FF7F /* LeafModel.swift in Sources */,
 			);
@@ -348,7 +353,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -408,7 +413,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -436,7 +441,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stonecanyon.DSSteinerCircles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = macosx;
@@ -464,7 +469,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stonecanyon.DSSteinerCircles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = macosx;
@@ -487,7 +492,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stonecanyon.DSSteinerCirclesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -508,7 +513,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stonecanyon.DSSteinerCirclesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -557,17 +562,26 @@
 				kind = branch;
 			};
 		};
+		F8D54C9E2F90CDC70024BE0E /* XCRemoteSwiftPackageReference "SteinerCircleModel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dndydon/SteinerCircleModel";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F802BA4F247DD71600F28AA2 /* SteinerCircleModel */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SteinerCircleModel;
-		};
 		F83257CA2F90B57E00D86DF2 /* PrimeFactorization */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F83257C92F90B56400D86DF2 /* XCRemoteSwiftPackageReference "PrimeFactorization" */;
 			productName = PrimeFactorization;
+		};
+		F8B95AD62F92167500AA95F7 /* SteinerCircleModel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F8D54C9E2F90CDC70024BE0E /* XCRemoteSwiftPackageReference "SteinerCircleModel" */;
+			productName = SteinerCircleModel;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

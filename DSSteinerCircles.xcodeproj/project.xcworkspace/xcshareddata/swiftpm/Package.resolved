@@ -1,4 +1,5 @@
 {
+  "originHash" : "6cf1693679da2bb61b1ceec54c2184f7b67b4c2eda1c52dbd98bfcb48a4fb2c3",
   "pins" : [
     {
       "identity" : "primefactorization",
@@ -8,7 +9,16 @@
         "branch" : "main",
         "revision" : "4528acd4ac7659ef600be5053a43abe688008f8c"
       }
+    },
+    {
+      "identity" : "steinercirclemodel",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dndydon/SteinerCircleModel",
+      "state" : {
+        "revision" : "ebb309dded83da53f092dcafbcae4726a862c226",
+        "version" : "1.0.1"
+      }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

@@ -17,13 +17,28 @@
 /// context (`totalCount`, `startIndex`) from their parent.
 
 import SwiftUI
-import SteinerCircleModel
 import PrimeFactorization
+import SteinerCircleModel
+
+/// Controls how collapsed prime factors are ordered in the hierarchy.
+/// The first factor becomes the outermost ring count.
+enum FactorOrdering: CaseIterable {
+  case largestFirst   // default: biggest factor = outer ring
+  case smallestFirst  // smallest factor = outer ring
+}
 
 @Observable
 class SteinerRingModel: Identifiable {
 
     let id = UUID()
+
+    /// Controls how collapsed factors are ordered in the hierarchy.
+    /// Changing this triggers a rebuild.
+    var factorOrdering: FactorOrdering = .largestFirst {
+        didSet {
+            if factorOrdering != oldValue { rebuild() }
+        }
+    }
 
     /// Radius of this ring in its parent's coordinate space (root = 1.0).
     var outerRadius: CGFloat
@@ -132,12 +147,17 @@ class SteinerRingModel: Identifiable {
         if twos == 1 {
             result.append(2)
         }
-        return result.sorted(by: >)
+        switch factorOrdering {
+        case .largestFirst:
+            return result.sorted(by: >)
+        case .smallestFirst:
+            return result.sorted(by: <)
+        }
     }
 
-    /// Radius of each chain circle, adjusted for gap.
+    /// Radius of each chain circle (gap already applied by the package).
     var rho: CGFloat {
-        (1 - gap) * steinerCircle.rho
+        steinerCircle.rho
     }
 
     /// Radius of the inner circle.
@@ -196,13 +216,11 @@ class SteinerRingModel: Identifiable {
 
     private func stepCount(by delta: Int) {
         let newCount = count + delta
-        guard newCount >= 1, newCount <= 500 else {
+        guard newCount >= 1, newCount <= 1024 else {
             stopPlayback()
             return
         }
-        withAnimation(.snappy(duration: 0.3)) {
-            count = newCount
-        }
+        count = newCount
     }
 
     // MARK: - Actions
@@ -229,11 +247,12 @@ class SteinerRingModel: Identifiable {
 
     // MARK: - Propagation
 
-    /// Push gap and thickness changes down to child rings.
+    /// Push gap, thickness, and factor ordering down to child rings.
     private func propagateToChildren() {
         for child in children {
             child.gap = gap
             child.thickness = thickness
+            child.factorOrdering = factorOrdering
         }
     }
 
@@ -249,12 +268,37 @@ class SteinerRingModel: Identifiable {
         }
     }
 
-    /// Create a flat ring of `count` leaf circles.
+    /// Create a flat ring of `count` leaf circles, reusing existing
+    /// LeafModel instances where possible to reduce allocations.
     private func rebuildFlat() {
         children = []
-        leaves = (0..<max(1, count)).map { i in
-            let globalIndex = startIndex + i
-            return LeafModel(index: globalIndex, fillColor: colorForValue(globalIndex, of: totalCount))
+        let n = max(1, count)
+        if leaves.count == n {
+            // Same count — just update colors/indices in place
+            for i in 0..<n {
+                let globalIndex = startIndex + i
+                leaves[i].index = globalIndex
+                leaves[i].fillColor = colorForValue(globalIndex, of: totalCount)
+            }
+        } else if leaves.count > n {
+            // Shrink: update existing, drop extras
+            leaves.removeLast(leaves.count - n)
+            for i in 0..<n {
+                let globalIndex = startIndex + i
+                leaves[i].index = globalIndex
+                leaves[i].fillColor = colorForValue(globalIndex, of: totalCount)
+            }
+        } else {
+            // Grow: update existing, append new
+            for i in 0..<leaves.count {
+                let globalIndex = startIndex + i
+                leaves[i].index = globalIndex
+                leaves[i].fillColor = colorForValue(globalIndex, of: totalCount)
+            }
+            for i in leaves.count..<n {
+                let globalIndex = startIndex + i
+                leaves.append(LeafModel(index: globalIndex, fillColor: colorForValue(globalIndex, of: totalCount)))
+            }
         }
     }
 
@@ -272,7 +316,7 @@ class SteinerRingModel: Identifiable {
         let childCount = remainingFactors.reduce(1, *)
 
         let outerSteiner = SteinerCircle(outerRadius: outerRadius, circleCount: outerCount, gap: gap)
-        let childRadius = (1 - gap) * outerSteiner.rho
+        let childRadius = outerSteiner.rho
 
         children = (0..<outerCount).map { i in
             let child = SteinerRingModel(
@@ -284,6 +328,7 @@ class SteinerRingModel: Identifiable {
                 startIndex: startIndex + i * childCount
             )
             child.showPrimes = (remainingFactors.count > 1)
+            child.factorOrdering = factorOrdering
             return child
         }
     }

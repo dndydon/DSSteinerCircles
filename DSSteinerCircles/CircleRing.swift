@@ -16,7 +16,6 @@
 /// leaf labels can counter-rotate to stay upright.
 
 import SwiftUI
-import SteinerCircleModel
 
 struct CircleRing: View {
 
@@ -38,19 +37,22 @@ struct CircleRing: View {
 
     var body: some View {
         ZStack(alignment: .topLeading) {
-            // Show the factors toggle only at the root level
+            // Show toggles only at the root level
             if depth == 0 {
-                Toggle(isOn: Bindable(ring).showPrimes) {
-                    let factors = String(describing: ring.factors)
-                    let biggest = ring.collapsedFactors.first ?? ring.count
-                    let remainder = ring.count / biggest
-                    VStack(alignment: .leading) {
-                        Text("Show factors:")
-                        Text("\(factors)")
-                        Text("\(ring.count) = \(biggest) x \(remainder)")
-                            .font(.headline)
+                VStack(alignment: .leading) {
+                    Toggle(isOn: Bindable(ring).showPrimes) {
+                        let factors = String(describing: ring.factors)
+                        let biggest = ring.collapsedFactors.first ?? ring.count
+                        let remainder = ring.count / biggest
+                        VStack(alignment: .leading) {
+                            Text("Show factors:")
+                            Text("\(factors)")
+                            Text("\(ring.count) = \(biggest) x \(remainder)")
+                                .font(.headline)
+                        }
                     }
                 }
+                .zIndex(1)
             }
 
             ZStack(alignment: .center) {
@@ -101,7 +103,9 @@ struct CircleRing: View {
                 // Outer border stroke
                 Circle()
                     .stroke(style: StrokeStyle(lineWidth: ring.thickness))
+
             }
+            .drawingGroup()
         }
     }
 }
