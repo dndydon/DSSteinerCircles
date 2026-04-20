@@ -16,6 +16,7 @@ struct CircleLabeled: View {
 
     var leaf: LeafModel
     var rotation: Double = 0.0
+    var showLabels: Bool = true
     let lineWidth: CGFloat = 8
 
     var body: some View {
@@ -25,13 +26,15 @@ struct CircleLabeled: View {
                 .shadow(radius: leaf.selected ? 30 : 0)
                 .overlay(leaf.selected ? Color.yellow : Color.clear,
                          in: Circle().inset(by: lineWidth / 2).stroke(style: StrokeStyle(lineWidth: 8)))
-            // Always present in layout to prevent size jumps on selection
-            Text(leaf.label)
-                .font(.largeTitle)
-                .scaleEffect(10)
-                .foregroundColor(.primary)
-                .rotationEffect(Angle(degrees: rotation))
-                .opacity(leaf.selected ? 1 : 0)
+            if showLabels {
+                // Always present in layout to prevent size jumps on selection
+                Text(leaf.label)
+                    .font(.largeTitle)
+                    .scaleEffect(10)
+                    .foregroundColor(.primary)
+                    .rotationEffect(Angle(degrees: rotation))
+                    .opacity(leaf.selected ? 1 : 0)
+            }
         }
         .gesture(TapGesture()
             .onEnded { _ in

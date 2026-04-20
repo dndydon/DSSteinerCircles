@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/dndydon/SteinerCircleModel",
       "state" : {
-        "revision" : "ebb309dded83da53f092dcafbcae4726a862c226",
-        "version" : "1.0.1"
+        "revision" : "0c719af342cce2f4c9c2fb19b332e5d662d7b6cb",
+        "version" : "1.0.2"
       }
     }
   ],
