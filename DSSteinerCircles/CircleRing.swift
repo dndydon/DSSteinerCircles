@@ -6,34 +6,27 @@
   //  Copyright © 2020 Don Sleeter. All rights reserved.
   //
 
-  /// Recursive view that renders a Steiner circle ring.
+  /// Recursive view that renders a Steiner circle ring using `RadialLayout`.
   ///
   /// At `depth == 0` (root), it shows the toggle, dial, and outer border.
   /// When the ring is hierarchical, it recurses into child `CircleRing`s;
-  /// otherwise it renders `CircleLabeled` leaves.
+  /// otherwise it renders leaf shapes via `ShapeView`.
   ///
   /// `parentRotation` accumulates rotation from all ancestor rings so that
   /// leaf labels can counter-rotate to stay upright.
 
 import SwiftUI
+import SteinerCircleModel
 
 struct CircleRing: View {
 
   var ring: SteinerRingModel
+  var shapeKind: ShapeKind = .circle
+  var pointingDirection: PointingDirection = .fixedNorth
   var depth: Int = 0
-  var parentRotation: Double = 0.0
+  var parentRotation: Angle = .zero
 
-    /// Scale factor for leaves/children relative to this ring's size.
-  private var normalizedRho: CGFloat {
-    guard ring.outerRadius > 0 else { return 0 }
-    return ring.rho / ring.outerRadius
-  }
-
-    /// Inner circle radius as a fraction of this ring's size.
-  private var normalizedInnerRadius: CGFloat {
-    guard ring.outerRadius > 0 else { return 0 }
-    return ring.innerRadius / ring.outerRadius
-  }
+  private let maxViewableCount = 100
 
   var body: some View {
     ZStack(alignment: .topLeading) {
@@ -58,63 +51,119 @@ struct CircleRing: View {
         .zIndex(1)
       }
 
-      ZStack(alignment: .center) {
+      GeometryReader { proxy in
+        let size = proxy.size
+        let radius = min(size.width, size.height) / 2
+        let sc = SteinerCircle(outerRadius: radius,
+                               circleCount: ring.displayCount,
+                               gap: ring.gap)
 
+        ZStack(alignment: .center) {
           // Inner circle stroke
-        Circle()
-          .inset(by: ring.thickness / 2)
-          .stroke(style: StrokeStyle(lineWidth: ring.thickness))
-          .scaleEffect(normalizedInnerRadius, anchor: UnitPoint(x: 0.50, y: 0.50))
-          .foregroundColor(Color(.yellow).opacity(0.75))
+          Circle()
+            .inset(by: ring.thickness / 2)
+            .stroke(style: StrokeStyle(lineWidth: ring.thickness))
+            .frame(width: sc.innerRadius * 2, height: sc.innerRadius * 2)
+            .foregroundColor(Color(.yellow).opacity(0.75))
 
           // Rotatable dial (root only)
-        if depth == 0 {
-          Dial(rotation: Bindable(ring).rotationAngle,
-               innerRadius: normalizedInnerRadius,
-               thickness: ring.thickness)
-          .opacity(0.65)
-          .aspectRatio(1.0, contentMode: .fit)
-          .onTapGesture(count: 2) {
-            ring.resetRotation()
+          if depth == 0 {
+            Dial(rotation: Bindable(ring).rotationAngle,
+                 innerRadius: sc.innerRadius / radius,
+                 thickness: ring.thickness)
+            .opacity(0.65)
+            .aspectRatio(1.0, contentMode: .fit)
+            .onTapGesture(count: 2) {
+              ring.resetRotation()
+            }
+            .onTapGesture(count: 1) {
+              ring.stopPlayback()
+            }
           }
-          .onTapGesture(count: 1) {
-            ring.stopPlayback()
-          }
-        }
 
-        if ring.isHierarchical {
-            // Hierarchical: place child rings around this ring
-          ForEach(Array(ring.children.enumerated()), id: \.element.id) { idx, child in
-            let direction = ring.rotationAngle + 360 / Double(ring.displayCount) * Double(idx)
-            CircleRing(ring: child, depth: depth + 1, parentRotation: parentRotation + direction)
-              .scaleEffect(normalizedRho,
-                           anchor: UnitPoint(x: 0.50, y: ring.displayCount == 1 ? 0.5 : 0.0))
-              .rotationEffect(.degrees(direction))
+          // Laid-out content
+          RadialLayout(steinerCircle: sc) {
+            if ring.isHierarchical {
+              ForEach(Array(ring.children.enumerated()), id: \.element.id) { idx, child in
+                let groupRotation = rotationAngle(for: pointingDirection, index: idx, total: ring.displayCount)
+                let dialRotation = Angle.degrees(ring.rotationAngle)
+                CircleRing(
+                  ring: child,
+                  shapeKind: shapeKind,
+                  pointingDirection: pointingDirection,
+                  depth: depth + 1,
+                  parentRotation: parentRotation + groupRotation + dialRotation
+                )
+                .rotationEffect(groupRotation)
+              }
+            } else {
+              ForEach(ring.leaves) { leaf in
+                let idx = leaf.index - ring.startIndex
+                leafView(leaf: leaf, index: idx, total: ring.displayCount, cSize: sc.rho * 2)
+              }
+            }
           }
-        } else {
-            // Flat: place leaf circles around this ring
-          ForEach(ring.leaves) { leaf in
-            let direction = ring.rotationAngle + 360 / Double(ring.displayCount) * Double(leaf.index - ring.startIndex)
-            let totalRotation = parentRotation + direction
-            CircleLabeled(leaf: leaf, rotation: -totalRotation, showLabels: ring.totalCount <= 100)
-              .scaleEffect(normalizedRho,
-                           anchor: UnitPoint(x: 0.50, y: ring.displayCount == 1 ? 0.5 : 0.0))
-              .rotationEffect(.degrees(direction))
-          }
-        }
+          .rotationEffect(.degrees(ring.rotationAngle))
 
           // Outer border stroke
-        Circle()
-          .stroke(style: StrokeStyle(lineWidth: ring.thickness))
+          Circle()
+            .stroke(style: StrokeStyle(lineWidth: ring.thickness))
 
+          // Large count label when too many to render individually
+          if !ring.isHierarchical && ring.count > maxViewableCount {
+            Text("\(ring.count)")
+              .font(.title)
+          }
+        }
       }
       .drawingGroup()
+    }
+  }
+
+  // MARK: - Leaf View
+
+  @ViewBuilder
+  private func leafView(leaf: LeafModel, index: Int, total: Int, cSize: CGFloat) -> some View {
+    let shapeRotation = rotationAngle(for: pointingDirection, index: index, total: total)
+    let dialRotation = Angle.degrees(ring.rotationAngle)
+    let totalRotation = parentRotation + shapeRotation + dialRotation
+
+    ShapeView(shapeKind: shapeKind)
+      .foregroundColor(leaf.selected ? leaf.selectedColor : leaf.fillColor)
+      .shadow(radius: leaf.selected ? 30 : 0)
+      .overlay(
+        leaf.selected ? Color.yellow : Color.clear,
+        in: Circle().inset(by: 4).stroke(style: StrokeStyle(lineWidth: 8))
+      )
+      .overlay(
+        leaf.selected && total <= maxViewableCount ?
+        Text(leaf.label)
+          .font(.largeTitle)
+          .scaleEffect(10)
+          .foregroundColor(.primary)
+          .rotationEffect(-totalRotation) : nil
+      )
+      .rotationEffect(shapeRotation)
+      .onTapGesture {
+        leaf.toggleSelection()
+      }
+  }
+
+  // MARK: - Rotation
+
+  private func rotationAngle(for direction: PointingDirection, index: Int, total: Int) -> Angle {
+    switch direction {
+      case .fixedNorth:
+        return .zero
+      case .radially:
+        let angleStep = Angle.degrees(360).radians / Double(max(total, 1))
+        let subviewAngle = angleStep * Double(index)
+        return .radians(subviewAngle)
     }
   }
 }
 
 #Preview {
   CircleRing(ring: SteinerRingModel(count: 12, gap: 0.050, thickness: 1))
-    .scaleEffect(0.96)
     .frame(width: 400, height: 400)
 }

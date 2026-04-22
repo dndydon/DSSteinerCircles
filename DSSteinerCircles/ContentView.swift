@@ -12,12 +12,14 @@
 import SwiftUI
 
 struct ContentView: View {
-  
+
   @State private var ring = SteinerRingModel()
-  
+  @State private var shapeKind: ShapeKind = .circle
+  @State private var pointingDirection: PointingDirection = .fixedNorth
+
   var body: some View {
     VStack {
-      CircleRing(ring: ring)
+      CircleRing(ring: ring, shapeKind: shapeKind, pointingDirection: pointingDirection)
         .scaleEffect(0.90)
         .aspectRatio(1.0, contentMode: .fit)
       
@@ -30,7 +32,7 @@ struct ContentView: View {
       )
       
       GroupBox(label: Text("Configuration:")) {
-        ControlPanel(ring: ring)
+        ControlPanel(ring: ring, shapeKind: $shapeKind, pointingDirection: $pointingDirection)
       }
       .padding([.horizontal, .bottom])
     }
