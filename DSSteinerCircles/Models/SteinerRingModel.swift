@@ -88,7 +88,8 @@ class SteinerRingModel: Identifiable {
     // MARK: - Init
   
   init(count: Int = 6, outerRadius: CGFloat = 1.0, gap: Double = 0.050, thickness: CGFloat = 0.0,
-       totalCount: Int? = nil, startIndex: Int = 1, selectedIndices: Set<Int> = []) {
+       totalCount: Int? = nil, startIndex: Int = 1, selectedIndices: Set<Int> = [],
+       showPrimes: Bool = false) {
     self.count = count
     self.totalCount = totalCount ?? count
     self.startIndex = startIndex
@@ -96,6 +97,7 @@ class SteinerRingModel: Identifiable {
     self.gap = gap
     self.thickness = thickness
     self.selectedIndices = selectedIndices
+    self.showPrimes = showPrimes
     rebuild()
   }
   
