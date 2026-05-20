@@ -23,6 +23,7 @@ struct CircleRing: View {
   var ring: SteinerRingModel
   var shapeKind: ShapeKind = .circle
   var pointingDirection: PointingDirection = .fixedNorth
+  var showChrome: Bool = true
   var depth: Int = 0
   var parentRotation: Angle = .zero
 
@@ -71,7 +72,8 @@ struct CircleRing: View {
             Dial(rotation: Bindable(ring).rotationAngle,
                  innerRadius: sc.innerRadius / radius,
                  thickness: ring.thickness)
-            .opacity(0.65)
+            .opacity(showChrome ? 0.65 : 0)
+            .allowsHitTesting(showChrome)
             .aspectRatio(1.0, contentMode: .fit)
             .onTapGesture(count: 2) {
               ring.resetRotation()
@@ -133,13 +135,12 @@ struct CircleRing: View {
       .shadow(radius: leaf.selected ? 30 : 0)
       .overlay(
         leaf.selected ? Color.yellow : Color.clear,
-        in: Circle().inset(by: 4).stroke(style: StrokeStyle(lineWidth: 8))
+        in: Circle().inset(by: 1).stroke(style: StrokeStyle(lineWidth: 2))
       )
       .overlay(
         leaf.selected && total <= maxViewableCount ?
         Text(leaf.label)
-          .font(.largeTitle)
-          .scaleEffect(10)
+          .font(.system(size: cSize / 1.6, weight: .semibold))
           .foregroundColor(.primary)
           .rotationEffect(-totalRotation) : nil
       )

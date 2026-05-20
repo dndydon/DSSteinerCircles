@@ -13,16 +13,30 @@ import SwiftUI
 
 struct ContentView: View {
 
-  @State private var ring = SteinerRingModel()
-  @State private var shapeKind: ShapeKind = .circle
-  @State private var pointingDirection: PointingDirection = .fixedNorth
+  @State private var ring: SteinerRingModel = {
+    let d = UserDefaults.standard
+    return SteinerRingModel(
+      count: d.integer(forKey: "count"),
+      gap: d.double(forKey: "gap"),
+      thickness: CGFloat(d.double(forKey: "thickness")),
+      showPrimes: d.bool(forKey: "showPrimes")
+    )
+  }()
+  @AppStorage("shapeKind") private var shapeKind: ShapeKind = .circle
+  @AppStorage("pointingDirection") private var pointingDirection: PointingDirection = .fixedNorth
+  @AppStorage("showChrome") private var showChrome = true
 
   var body: some View {
     VStack {
-      CircleRing(ring: ring, shapeKind: shapeKind, pointingDirection: pointingDirection)
+      CircleRing(ring: ring, shapeKind: shapeKind, pointingDirection: pointingDirection, showChrome: showChrome)
         .scaleEffect(0.90)
         .aspectRatio(1.0, contentMode: .fit)
-      
+        .overlay(alignment: .topTrailing) {
+          Toggle("Show Chrome", isOn: $showChrome)
+            .toggleStyle(.checkbox)
+            .padding()
+        }
+
       PlayPauseControl(
         onFastBackward:  { ring.playBackward(fast: true) },
         onPlayBackward:  { ring.playBackward() },
@@ -30,7 +44,7 @@ struct ContentView: View {
         onPlay:          { ring.playForward() },
         onFastForward:   { ring.playForward(fast: true) }
       )
-      
+
       GroupBox(label: Text("Configuration:")) {
         ControlPanel(ring: ring, shapeKind: $shapeKind, pointingDirection: $pointingDirection)
       }
@@ -44,13 +58,25 @@ struct ContentView: View {
       }
       .keyboardShortcut(.leftArrow, modifiers: [])
       .hidden()
-      
+
       Button("") {
         ring.stopPlayback()
         ring.countAsDouble += 1
       }
       .keyboardShortcut(.rightArrow, modifiers: [])
       .hidden()
+    }
+    .onChange(of: ring.count) { _, new in
+      UserDefaults.standard.set(new, forKey: "count")
+    }
+    .onChange(of: ring.gap) { _, new in
+      UserDefaults.standard.set(new, forKey: "gap")
+    }
+    .onChange(of: ring.thickness) { _, new in
+      UserDefaults.standard.set(Double(new), forKey: "thickness")
+    }
+    .onChange(of: ring.showPrimes) { _, new in
+      UserDefaults.standard.set(new, forKey: "showPrimes")
     }
   }
 }
